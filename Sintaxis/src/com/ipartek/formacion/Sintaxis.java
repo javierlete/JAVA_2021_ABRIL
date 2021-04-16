@@ -127,5 +127,6 @@ public class Sintaxis {
 		s = "" + a; // Muy mala opción 
 		s = new StringBuffer("").append(a).toString();
 		s = ((Integer)a).toString();
+		
 	}
 }
