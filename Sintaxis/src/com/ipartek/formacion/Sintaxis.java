@@ -141,7 +141,7 @@ public class Sintaxis {
 	 * @param args
 	 */
 	@SuppressWarnings("deprecation")
-	public static void main(String[] args) {
+	public static void mainFechas(String[] args) {
 		// Java 1.0
 		Date date = new Date();
 		System.out.println(date);
@@ -156,5 +156,34 @@ public class Sintaxis {
 		LocalDate ld = LocalDate.now();
 		System.out.println(ld);
 		System.out.println(ld.getYear() + "/" + ld.getMonthValue() + "/" + ld.getDayOfMonth());
+	}
+
+	/**
+	 * Arrays
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		int[] arr;
+		int tamanyo = 3;
+		arr = new int[tamanyo];
+		int[] arr2 = new int[10];
+		
+		System.out.println(arr.length);
+		
+		arr[0] = 67;
+		arr[1] = 12;
+		arr[2] = 56;
+		//arr[3] = 12; // Da error
+		
+		char[][] tablero = new char[8][8];
+		
+		tablero[0][0] = 'T';
+		tablero[0][1] = 'C';
+		
+		tablero[7][0] = 't';
+		tablero[7][7] = 't';
+		
+		System.out.println(tablero.length);
+		System.out.println(tablero[0].length);
 	}
 }
