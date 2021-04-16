@@ -1,9 +1,13 @@
 package com.ipartek.formacion;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Clase que muestra la sintaxis básica de Java
@@ -146,12 +150,13 @@ public class Sintaxis {
 		Date date = new Date();
 		System.out.println(date);
 		System.out.println((date.getYear() + 1900) + "/" + (date.getMonth() + 1) + "/" + date.getDate());
-		
+
 		// Java 1.1
 		GregorianCalendar gc = new GregorianCalendar();
 		System.out.println(gc);
-		System.out.println(gc.get(Calendar.YEAR) + "/" + (gc.get(Calendar.MONTH) + 1) + "/" + gc.get(Calendar.DAY_OF_MONTH));
-		
+		System.out.println(
+				gc.get(Calendar.YEAR) + "/" + (gc.get(Calendar.MONTH) + 1) + "/" + gc.get(Calendar.DAY_OF_MONTH));
+
 		// Java 8 (o JodaTime con Java5 o superior)
 		LocalDate ld = LocalDate.now();
 		System.out.println(ld);
@@ -160,30 +165,85 @@ public class Sintaxis {
 
 	/**
 	 * Arrays
+	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	@SuppressWarnings("unused")
+	public static void mainArrays(String[] args) {
 		int[] arr;
 		int tamanyo = 3;
 		arr = new int[tamanyo];
 		int[] arr2 = new int[10];
-		
+
 		System.out.println(arr.length);
-		
+
 		arr[0] = 67;
 		arr[1] = 12;
 		arr[2] = 56;
-		//arr[3] = 12; // Da error
-		
+		// arr[3] = 12; // Da error
+
 		char[][] tablero = new char[8][8];
-		
+
 		tablero[0][0] = 'T';
 		tablero[0][1] = 'C';
-		
+
 		tablero[7][0] = 't';
 		tablero[7][7] = 't';
-		
+
 		System.out.println(tablero.length);
 		System.out.println(tablero[0].length);
+	}
+
+	/**
+	 * Colecciones
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// Java 5 <String> Java8 <>
+		// Colección de elementos que pueden estar repetidos (Listas)
+		ArrayList<String> al = new ArrayList<>();
+
+		al.add("Uno");
+		al.add("Dos");
+		al.add("Tres");
+		al.add("Uno");
+
+		System.out.println(al.size());
+		
+		al.remove(1);
+		
+		System.out.println(al.get(1));
+		
+		// Colección de elementos sin repeticiones (Conjuntos)
+		HashSet<String> hs = new HashSet<>();
+		
+		hs.add("Uno");
+		hs.add("Dos");
+		hs.add("Tres");
+		hs.add("Uno");
+		
+		System.out.println(hs.size());
+		
+		Iterator<String> iterator = hs.iterator();
+		
+		System.out.println(iterator.next());
+		System.out.println(iterator.next());
+		System.out.println(iterator.next());
+		//System.out.println(iterator.next());
+		
+		// "Diccionario" (pares clave/valor)
+		HashMap<String, Integer> hm = new HashMap<>();
+		
+		hm.put("uno", 1);
+		hm.put("dos", 2);
+		
+		System.out.println(hm.get("dos"));
+		
+		HashMap<String, String> dic = new HashMap<>();
+		
+		dic.put("casa", "house");
+		dic.put("perro", "dog");
+		
+		System.out.println(dic.get("perro"));
 	}
 }
