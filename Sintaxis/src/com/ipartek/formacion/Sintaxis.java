@@ -1,5 +1,8 @@
 package com.ipartek.formacion;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -8,6 +11,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * Clase que muestra la sintaxis básica de Java
@@ -196,9 +200,10 @@ public class Sintaxis {
 
 	/**
 	 * Colecciones
+	 * 
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void mainColecciones(String[] args) {
 		// Java 5 <String> Java8 <>
 		// Colección de elementos que pueden estar repetidos (Listas)
 		ArrayList<String> al = new ArrayList<>();
@@ -209,41 +214,95 @@ public class Sintaxis {
 		al.add("Uno");
 
 		System.out.println(al.size());
-		
+
 		al.remove(1);
-		
+
 		System.out.println(al.get(1));
-		
+
 		// Colección de elementos sin repeticiones (Conjuntos)
 		HashSet<String> hs = new HashSet<>();
-		
+
 		hs.add("Uno");
 		hs.add("Dos");
 		hs.add("Tres");
 		hs.add("Uno");
-		
+
 		System.out.println(hs.size());
-		
+
 		Iterator<String> iterator = hs.iterator();
-		
+
 		System.out.println(iterator.next());
 		System.out.println(iterator.next());
 		System.out.println(iterator.next());
-		//System.out.println(iterator.next());
-		
+		// System.out.println(iterator.next());
+
 		// "Diccionario" (pares clave/valor)
 		HashMap<String, Integer> hm = new HashMap<>();
-		
+
 		hm.put("uno", 1);
 		hm.put("dos", 2);
-		
+
 		System.out.println(hm.get("dos"));
-		
+
 		HashMap<String, String> dic = new HashMap<>();
-		
+
 		dic.put("casa", "house");
 		dic.put("perro", "dog");
-		
+
 		System.out.println(dic.get("perro"));
 	}
+
+	/**
+	 * Entrada por teclado
+	 * 
+	 * @param args
+	 * @throws IOException
+	 */
+	public static void main(String[] args) throws IOException {
+		System.out.println("Bienvenido a este programa");
+
+		// Java 5
+		Scanner s = new Scanner(System.in);
+
+		System.out.print("¿Cómo te llamas? ");
+		String nombre = s.nextLine(); // Javier\n
+
+		System.out.println("Hola " + nombre);
+
+		System.out.print("¿Años de experiencia? ");
+		int anyos = s.nextInt(); // 24\n
+		s.nextLine(); // \n
+		// Buffer vacío
+		
+		System.out.println("Osea que tienes " + anyos + " años de experiencia...");
+
+		System.out.println("¿Especialidad?");
+		String especialidad = s.nextLine(); // \n
+
+		System.out.println(especialidad.toUpperCase() + " es una buena especialidad");
+
+		System.out.println("¿Hobby?");
+		String hobby = s.nextLine();
+
+		System.out.println(hobby.toUpperCase() + " es un buen hobby");
+		
+		s.close();
+		
+		// Versiones anteriores
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String linea = br.readLine();
+		
+		int dato = Integer.parseInt(linea);
+		
+		String texto = String.valueOf(dato);
+		
+		System.out.println(texto);
+		
+		// Java 6 Funciona pero solo en consola real
+		//String linea = System.console().readLine();
+		
+		//System.out.println(linea);
+	}
+	
+	
 }
