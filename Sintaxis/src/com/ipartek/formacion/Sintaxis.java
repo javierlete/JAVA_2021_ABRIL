@@ -258,7 +258,7 @@ public class Sintaxis {
 	 * @param args
 	 * @throws IOException
 	 */
-	public static void main(String[] args) throws IOException {
+	public static void mainConsola(String[] args) throws IOException {
 		System.out.println("Bienvenido a este programa");
 
 		// Java 5
@@ -273,7 +273,7 @@ public class Sintaxis {
 		int anyos = s.nextInt(); // 24\n
 		s.nextLine(); // \n
 		// Buffer vacío
-		
+
 		System.out.println("Osea que tienes " + anyos + " años de experiencia...");
 
 		System.out.println("¿Especialidad?");
@@ -285,24 +285,194 @@ public class Sintaxis {
 		String hobby = s.nextLine();
 
 		System.out.println(hobby.toUpperCase() + " es un buen hobby");
-		
+
 		s.close();
-		
+
 		// Versiones anteriores
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String linea = br.readLine();
-		
+
 		int dato = Integer.parseInt(linea);
-		
+
 		String texto = String.valueOf(dato);
-		
+
 		System.out.println(texto);
-		
+
 		// Java 6 Funciona pero solo en consola real
-		//String linea = System.console().readLine();
-		
-		//System.out.println(linea);
+		// String linea = System.console().readLine();
+
+		// System.out.println(linea);
 	}
-	
-	
+
+	/**
+	 * Estructuras de control
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		boolean estaEncendido = true;
+
+		if (!estaEncendido) {
+			System.out.println("Es falso");
+		} else {
+			System.out.println("Es verdadero");
+			System.out.println("El motor está encendido");
+		}
+
+		int numero = 101;
+
+		if (numero > 100) {
+			System.out.println("El número es mayor que 100");
+		} else if (numero > 50) {
+			System.out.println("El número es mayor que 50");
+		} else {
+			System.out.println("No tengo nada que decir");
+		}
+
+		// Sólo admite enteros y boolean + String en Java 7 o superior
+
+		int opcion = 2;
+
+		switch (opcion) {
+		case 1:
+			System.out.println("Opción 1");
+			break;
+		case 2:
+			System.out.println("Opción 2");
+			break;
+		default:
+			System.out.println("Opción no reconocida");
+		}
+
+		String nombre = "Javier";
+
+		switch (nombre) {
+		case "Javier":
+			System.out.println("¡Tú eres el profe!");
+			break;
+		case "Pepe":
+			System.out.println("¡Tú eres el ejemplo por defecto!");
+			break;
+		default:
+			System.out.println("Tú eres un nombre normal y corriente");
+		}
+
+		int mes = 4, dias;
+
+		switch (mes) {
+		case 2:
+			dias = 28;
+			break;
+		case 4:
+		case 6:
+		case 9:
+		case 11:
+			dias = 30;
+			break;
+		default:
+			dias = 31;
+		}
+
+		System.out.println(dias);
+
+		int c = 1;
+
+		while (c <= 3) {
+			System.out.println(c++);
+		}
+
+		c = 1;
+
+		do {
+			System.out.println(c++);
+		} while (c <= 3);
+
+		for (int i = 1; i <= 3; i++) {
+			System.out.println(i);
+		}
+
+		// int i = 1;
+		// while(i <= 3) {
+		// System.out.println(i);
+		// i++;
+		// }
+
+		for (int j = 5, k = 10; j < k; j++, k -= 2, System.out.println(j + ", " + k)) {
+		}
+
+		int[] arr = { 1, 5, 67, 89, 0, 67, 43, 56 };
+		boolean encontrado = false;
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + "\t");
+
+			if (arr[i] == 0) {
+				encontrado = true;
+				break;
+			}
+		}
+
+		System.out.println(encontrado ? "Hemos encontrado un cero" : "No lo hemos encontrado");
+
+		encontrado = false;
+
+//		for(int i = 0; i < arr.length && !(encontrado = arr[i] == 0); i++) {
+//			System.out.print(arr[i] + "\t");
+//		}
+
+		for (int i = 0; i < arr.length && !encontrado; i++) {
+			System.out.print(arr[i] + "\t");
+
+			if (arr[i] == 0) {
+				encontrado = true;
+			}
+		}
+
+		System.out.println(encontrado ? "Hemos encontrado un cero" : "No lo hemos encontrado");
+
+		// Java 5, parecido a for(var dato of arr) en JavaScript o foreach(int dato:
+		// arr) en C#
+
+		encontrado = false;
+
+		for (int dato : arr) {
+			System.out.print(dato + "\t");
+
+			if (dato == 0) {
+				encontrado = true;
+				break;
+			}
+		}
+
+		System.out.println(encontrado ? "Hemos encontrado un cero" : "No lo hemos encontrado");
+
+		encontrado = false;
+
+		// Mala alternativa ya que sigue repitiendo aunque no haga nada con los datos y haya encontrado lo que buscaba
+		for (int dato : arr) {
+			if (!encontrado) {
+				System.out.print(dato + "\t");
+
+				if (dato == 0) {
+					encontrado = true;
+				}
+			}
+		}
+
+		System.out.println(encontrado ? "Hemos encontrado un cero" : "No lo hemos encontrado");
+
+		if (arr[0] == 56454)
+			; // Metedura de pata monumental SOBRA EL PUNTO Y COMA
+		{
+			int variableInterna = 5;
+			System.out.println("Crea un ámbito para las variables declaradas dentro");
+			System.out.println(variableInterna);
+		}
+
+		// System.out.println(variableInterna);
+	}
+
+	{
+		System.out.println("No hace nada");
+	}
 }
