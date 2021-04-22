@@ -36,6 +36,14 @@ public class PersonaPrueba {
 			Persona p3 = new Persona("Juan");
 			
 			System.out.println(p3.aTexto());
+			
+			Persona pe1 = new Persona(5L, "Javier", LocalDate.of(1990, 5, 5));
+			Persona pe2 = new Persona(pe1);
+			
+			pe2.setNombre("Pepe");
+			
+			System.out.println(pe1.toString());
+			System.out.println(pe2);
 		} catch (Exception e) {
 			System.out.println("Error no esperado");
 			System.out.println(e.getMessage());

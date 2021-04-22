@@ -15,6 +15,10 @@ public class Persona {
 		setFechaNacimiento(fechaNacimiento);
 	}
 	
+	public Persona(Persona persona) {
+		this(persona.getId(), persona.getNombre(), persona.getFechaNacimiento());
+	}
+	
 	public Persona(String nombre, LocalDate fechaNacimiento) {
 		this(null, nombre, fechaNacimiento);
 	}
@@ -65,5 +69,10 @@ public class Persona {
 	
 	public String aTexto() {
 		return id + ", " + nombre + ", " + fechaNacimiento;
+	}
+
+	@Override
+	public String toString() {
+		return "Persona [id=" + id + ", nombre=" + nombre + ", fechaNacimiento=" + fechaNacimiento + "]";
 	}
 }
