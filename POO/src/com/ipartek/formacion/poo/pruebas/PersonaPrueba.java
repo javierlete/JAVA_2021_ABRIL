@@ -1,6 +1,7 @@
 package com.ipartek.formacion.poo.pruebas;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import com.ipartek.formacion.poo.entidades.Persona;
 
@@ -40,7 +41,10 @@ public class PersonaPrueba {
 			Persona pe1 = new Persona(5L, "Javier", LocalDate.of(1990, 5, 5));
 			Persona pe2 = new Persona(pe1);
 			
+			pe1.setFechaNacimiento(new Date());
+			
 			pe2.setNombre("Pepe");
+			pe2.setFechaNacimiento(1980,1,2);
 			
 			System.out.println(pe1.toString());
 			System.out.println(pe2);
