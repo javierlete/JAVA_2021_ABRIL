@@ -1,5 +1,6 @@
 package com.ipartek.formacion.bibliotecas;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -129,5 +130,10 @@ public class Consola {
 	public static boolean leerBoolean(String mensaje) {
 		char sn = leerChar(mensaje + "(S/N)");
 		return Character.toUpperCase(sn) == 'S';
+	}
+	
+	public static LocalDate leerLocalDate(String mensaje) {
+		String linea = leerString(mensaje + " (AAAA-MM-DD)");
+		return LocalDate.parse(linea);
 	}
 }
