@@ -6,7 +6,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class Persona {
+public class Persona { // extends Object {
 	// Variables de instancia (fields)
 	private Long id;
 	private String nombre;
@@ -38,6 +38,10 @@ public class Persona {
 	public Persona() {
 		this(null, "DESCONOCIDO", null);
 	}
+	
+//	public Persona() {
+//		super();
+//	}
 
 	// Métodos de acceso (getters y setters)
 	public Long getId() {
@@ -89,6 +93,43 @@ public class Persona {
 
 	public String aTexto() {
 		return id + ", " + nombre + ", " + fechaNacimiento;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fechaNacimiento == null) ? 0 : fechaNacimiento.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Persona other = (Persona) obj;
+		if (fechaNacimiento == null) {
+			if (other.fechaNacimiento != null)
+				return false;
+		} else if (!fechaNacimiento.equals(other.fechaNacimiento))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		return true;
 	}
 
 	@Override
