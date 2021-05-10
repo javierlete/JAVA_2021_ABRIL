@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo básico</title>
+</head>
+
+<body>
+    <header>
+        <h1>Ejemplos HTML</h1>
+        <p>Pequeños ejemplos de cómo hacer una página web</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Menú 1</a></li>
+            <li><a href="#">Menú 2</a></li>
+            <li><a href="#">Menú 3</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="titulos">
+            <h2>Títulos</h2>
+
+            <h3>Título 3</h3>
+            <h4>Título 4</h4>
+            <h5>Título 5</h5>
+            <h6>Título 6</h6>
+        </section>
+        <section id="parrafos">
+            <h2>Párrafos</h2>
+
+            <p><strong>Lorem</strong> ipsum <em>dolor</em> sit amet, consectetur adipisicing elit. Molestias explicabo
+                dolorum dolor mollitia corrupti maiores dignissimos porro repellat, odit cum, consequatur reprehenderit
+                neque quod necessitatibus, quasi optio debitis officiis quidem.</p>
+            <p>Eum ab maiores vel, expedita suscipit iusto sequi ad. Iure neque recusandae repellendus deserunt ratione
+                repudiandae laborum veniam odio ipsa impedit corporis consectetur quisquam assumenda quae est
+                voluptatibus, accusantium accusamus.</p>
+            <p>Quo <span>vel</span> magnam repudiandae sunt, rerum rem? Iure sequi quos debitis quasi vel unde quod
+                maiores eius inventore aperiam rem, illo earum incidunt optio at perferendis rerum blanditiis,
+                voluptatum quidem?</p>
+            <div>
+                <p>Vitae voluptas magni porro consequatur, ea cupiditate ducimus doloremque a. Tempora porro et omnis
+                    distinctio. Iure magnam esse tempora quos omnis sint, reiciendis impedit laudantium perspiciatis
+                    cumque vel, veniam est?</p>
+                <p>Facere quibusdam iure quas impedit, illum quae ducimus ab! Ipsam numquam saepe sunt, aliquam illo
+                    nobis porro, officiis ratione temporibus eius deserunt vel quo rem architecto aspernatur quos
+                    inventore earum?</p>
+            </div>
+
+            <p>
+                public class Hola {
+                public static void main(String[] args) {
+                System.out.println("Hola mundo");
+                }
+                }
+            </p>
+            <pre>
+public class Hola {
+    public static void main(String[] args) {
+        System.out.println("Hola mundo");
+    }
+}
+            </pre>
+        </section>
+        <section id="listas">
+            <h2>Listas</h2>
+
+            <!-- ul>li*3>{Elemento $}^^ol>li*3>{Ordenado $}^^dl>(dt>{Término $}^dd>{Definición $})*3 -->
+            <ul>
+                <li>Elemento 1</li>
+                <li>Elemento 2</li>
+                <li>Elemento 3</li>
+            </ul>
+            <ol>
+                <li>Ordenado 1</li>
+                <li>Ordenado 2</li>
+                <li>Ordenado 3</li>
+            </ol>
+            <dl>
+                <dt>HTML</dt>
+                <dd>Lenguaje de marcas para definir el contenido de la página</dd>
+                <dt>CSS</dt>
+                <dd>Lenguaje para definir el aspecto de una página web</dd>
+                <dt>JavaScript</dt>
+                <dd>Lenguaje para definir el comportamiento de una página web</dd>
+            </dl>
+        </section>
+        <section id="tablas">
+            <h2>Tablas</h2>
+
+            <table>
+                <caption>Tabla de ejemplo</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Javier</td>
+                        <td>Lete</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Pepe</td>
+                        <td>Pérez</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellidos</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+        <section id="multimedia">
+            <h2>Multimedia</h2>
+
+            <article id="imagen">
+                <h3>Imágen</h3>
+
+
+                <figure>
+                    <img src="imgs/arcos.jpg" alt="Pasillo que está cubierto por arcos" />
+
+                    <figcaption>Arcos</figcaption>
+                </figure>
+
+            </article>
+
+            <article id="sonido">
+                <h3>Sonido</h3>
+
+                <audio src="sounds/horse.mp3" controls></audio>
+
+                <iframe title="Moon Safari" src="https://open.spotify.com/embed/artist/0Wr0oT0aCD6w7O25TPwnoX" width="300" height="380"
+                    allow="encrypted-media"></iframe>
+            </article>
+
+            <article id="video">
+                <h3>Video</h3>
+
+                <video src="videos/mov_bbb.mp4" controls="controls">
+                    <track label="Español" kind="captions" srclang="es" src="resources/myvideo-es.vtt" default>
+                </video>
+
+                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/SVGjOUnQZ58"
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </article>
+
+            <article id="mapas">
+                <h3>Mapas</h3>
+
+                <iframe title="Mapa de Ipartek"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.762081766632!2d-2.915780684412699!3d43.25640788601541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses!2ses!4v1620667981374!5m2!1ses!2ses"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </article>
+        </section>
+
+        <section id="formularios">
+            <h3>Formularios</h3>
+
+            <form>
+                <fieldset>
+                    <legend>Básicos</legend>
+
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" placeholder="Tu nombre" />
+                    </div>
+                    <div>
+                        <label for="apellidos">Apellidos</label>
+                        <input id="apellidos" placeholder="Tus apellidos" />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Extendidos</legend>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Email del trabajo" />
+                    </div>
+                    
+                    <div>
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="Tu teléfono habitual" />
+                    </div>
+
+                    <div>
+                        <label for="web">Tu web</label>
+                        <input type="url" id="web" placeholder="Tu página web" />
+                    </div>
+                    
+                    <div>
+                        <label for="hijos">Número de hijos</label>
+                        <input type="number" min="0" max="10" id="hijos" placeholder="Los que tienes en tu casa" />
+                    </div>
+                    
+                    <div>
+                        <label for="fecha">Fecha de nacimiento</label>
+                        <input type="date" id="fecha" placeholder="AAAA-MM-DD" />
+                    </div>
+
+
+                </fieldset>
+                <fieldset>
+                    <legend>Botones</legend>
+
+                    <button>Aceptar</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <aside>
+
+    </aside>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
