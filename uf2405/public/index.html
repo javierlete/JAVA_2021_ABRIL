@@ -13,6 +13,7 @@
         <h1>Ejemplos HTML</h1>
         <p>Pequeños ejemplos de cómo hacer una página web</p>
     </header>
+
     <nav>
         <ul>
             <li><a href="#">Menú 1</a></li>
@@ -20,6 +21,7 @@
             <li><a href="#">Menú 3</a></li>
         </ul>
     </nav>
+
     <main>
         <section id="titulos">
             <h2>Títulos</h2>
@@ -143,8 +145,8 @@ public class Hola {
 
                 <audio src="sounds/horse.mp3" controls></audio>
 
-                <iframe title="Moon Safari" src="https://open.spotify.com/embed/artist/0Wr0oT0aCD6w7O25TPwnoX" width="300" height="380"
-                    allow="encrypted-media"></iframe>
+                <iframe title="Moon Safari" src="https://open.spotify.com/embed/artist/0Wr0oT0aCD6w7O25TPwnoX"
+                    width="300" height="380" allow="encrypted-media"></iframe>
             </article>
 
             <article id="video">
@@ -178,8 +180,9 @@ public class Hola {
 
                     <div>
                         <label for="nombre">Nombre</label>
-                        <input id="nombre" placeholder="Tu nombre" />
+                        <input id="nombre" pattern="\p{L}+" minlength="2" maxlength="20" placeholder="Tu nombre" />
                     </div>
+
                     <div>
                         <label for="apellidos">Apellidos</label>
                         <input id="apellidos" placeholder="Tus apellidos" />
@@ -192,7 +195,7 @@ public class Hola {
                         <label for="email">Email</label>
                         <input type="email" id="email" placeholder="Email del trabajo" />
                     </div>
-                    
+
                     <div>
                         <label for="telefono">Teléfono</label>
                         <input type="tel" id="telefono" placeholder="Tu teléfono habitual" />
@@ -202,17 +205,63 @@ public class Hola {
                         <label for="web">Tu web</label>
                         <input type="url" id="web" placeholder="Tu página web" />
                     </div>
-                    
+
                     <div>
                         <label for="hijos">Número de hijos</label>
                         <input type="number" min="0" max="10" id="hijos" placeholder="Los que tienes en tu casa" />
                     </div>
-                    
+
                     <div>
                         <label for="fecha">Fecha de nacimiento</label>
-                        <input type="date" id="fecha" placeholder="AAAA-MM-DD" />
+                        <input type="date" id="fecha" />
                     </div>
 
+                    <div>
+                        <label for="activo">Activo</label>
+                        <input type="checkbox" id="activo" />
+                    </div>
+
+                    <div>
+                        <label for="grupo1">Grupo 1</label>
+                        <input type="radio" id="grupo1" name="grupo" />
+                        <label for="grupo2">Grupo 2</label>
+                        <input type="radio" id="grupo2" name="grupo" />
+                        <label for="grupo3">Grupo 3</label>
+                        <input type="radio" id="grupo3" name="grupo" />
+                    </div>
+
+                    <div>
+                        <label for="pais">País</label>
+                        <select id="pais">
+                            <option>España</option>
+                            <option>Francia</option>
+                            <option>Portugal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="paises">Paises que te gustan</label>
+                        <select multiple id="paises">
+                            <option>España</option>
+                            <option>Francia</option>
+                            <option>Portugal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="color">Color preferido</label>
+                        <input type="color" id="color" />
+                    </div>
+
+                    <div>
+                        <label for="comentarios">Comentarios</label>
+                        <textarea id="comentarios"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="presupuesto">¿Cuánto es el máximo de tu presupuesto?</label>
+                        <input type="number" min="0" step=".01" id="presupuesto" />
+                    </div>
 
                 </fieldset>
                 <fieldset>
@@ -223,11 +272,17 @@ public class Hola {
             </form>
         </section>
     </main>
+
     <aside>
-
+        <ul>
+            <li><a href="#">Enlace 1</a></li>
+            <li><a href="#">Enlace 2</a></li>
+            <li><a href="#">Enlace 3</a></li>
+        </ul>
     </aside>
-    <footer>
 
+    <footer>
+        &copy;2021 Javier Lete García&amp;CIA; los&nbsp;mejores&nbsp;del&nbsp;mundo&nbsp;mundial
     </footer>
 </body>
 
