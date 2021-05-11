@@ -1,0 +1,288 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-fondo: black;
+  --color-tinta: white;
+  --color-fondo-gris: rgb(233, 233, 233);
+  --color-enlaces: rgb(71, 165, 243);
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+strong {
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+em {
+  text-decoration: underline;
+  font-style: normal;
+}
+
+pre {
+  background: var(--color-fondo-gris);
+}
+
+.marcado {
+  color: var(--color-tinta);
+  background: var(--color-fondo);
+}
+
+a {
+  color: var(--color-enlaces);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+dt {
+  display: inline-block;
+  font-weight: bold;
+  width: 24%;
+  text-align: right;
+  vertical-align: top;
+}
+
+dt:after {
+  content: ":";
+}
+
+dd {
+  display: inline-block;
+  margin: 0;
+  width: 74%;
+}
+
+body > header {
+  background: var(--color-fondo);
+  color: var(--color-tinta);
+  padding: 1em;
+  text-align: center;
+}
+
+body > header h1 {
+  text-transform: uppercase;
+}
+
+body > header p {
+  font-variant: small-caps;
+}
+
+body > nav {
+  position: sticky;
+  top: 0;
+
+  background-color: var(--color-fondo);
+  text-align: center;
+}
+
+body > nav ul {
+  border-top: 2px solid var(--color-tinta);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body > nav li {
+  display: inline;
+}
+
+body > nav a {
+  display: inline-block;
+  padding: 0.5em;
+  color: var(--color-tinta);
+}
+
+body > nav a:hover {
+  color: var(--color-fondo);
+  background: var(--color-tinta);
+  text-decoration: none;
+}
+
+main,
+aside,
+footer {
+  padding: 1em;
+}
+
+h2 {
+  background: var(--color-fondo-gris);
+  margin: 0 -0.5em;
+  padding: 0.5em;
+}
+
+h2::before {
+  content: "*";
+}
+
+h2::after {
+  content: "*";
+}
+
+#parrafos p {
+  text-transform: capitalize;
+}
+
+table {
+  width: 100%;
+  border: 1px solid var(--color-fondo-gris);
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+table caption {
+  font-weight: bold;
+  font-variant: small-caps;
+  font-size: 1.25em;
+  padding: 0.5em 0;
+}
+
+table thead,
+table tfoot {
+  background: var(--color-fondo);
+  color: var(--color-tinta);
+  text-transform: uppercase;
+}
+
+table td,
+table th {
+  padding: 0.5em;
+}
+
+table tbody td,
+table tbody th {
+  border: 1px solid lightgray;
+}
+table th:first-child {
+  text-align: right;
+}
+
+table th:nth-child(2),
+table th:nth-child(3) {
+  text-align: left;
+}
+
+table tr:nth-child(even) {
+  background: var(--color-fondo-gris);
+}
+
+#multimedia figure,
+#multimedia img {
+  border-radius: 0.5em;
+}
+
+#multimedia figure {
+  border: 1px solid var(--color-fondo-gris);
+  box-shadow: 0.5em 0.5em 0.5em lightgray;
+}
+
+#multimedia img,
+#multimedia audio,
+#multimedia video,
+#multimedia iframe {
+  width: 100%;
+}
+
+#multimedia figcaption {
+  padding: 0.5em;
+}
+
+.iframe-responsive {
+  position: relative;
+  padding-bottom: 75%; /* 4:3 */
+  height: 0;
+}
+
+.iframe-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+fieldset {
+    border: 1px solid lightgray;
+    border-radius: 0.5em;
+    margin: 1em 0;
+}
+
+legend {
+    font-weight: bold;
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+    padding: 0.40em;
+    font-weight: bold;
+}
+
+input, textarea, select, button {
+    border: 1px solid lightgray;
+    padding: 0.4em;
+    border-radius: 0.25em;
+    width: 100%;
+}
+
+aside ul {
+    padding-left: 0;
+    text-align: center;
+}
+
+aside li {
+    list-style: none;
+}
+
+footer {
+  background-color: var(--color-fondo);
+  color: var(--color-tinta);
+}
+
+@media (min-width: 768px) {
+    section:not(#formularios,#multimedia), fieldset, #multimedia article {
+        display: inline-block;
+        width: 49%;
+        vertical-align: top;
+    }
+}
+
+@media (min-width: 1024px) {
+    fieldset {
+        width: 32%;
+    }
+}
+
+@media (min-width: 1280px) {
+    section:not(#formularios,#multimedia), fieldset, #multimedia article {
+        width: 32%;
+    }
+}
+
+@media (min-width: 1440px) {
+    section:not(#formularios,#multimedia), #multimedia article {
+        width: 24%;
+    }
+
+    #formularios {
+        width: 74%;
+    }
+
+    aside {
+        display: inline-block;
+        width: 24%;
+    }
+}

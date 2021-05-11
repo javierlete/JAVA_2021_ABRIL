@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo básico</title>
+
+    <style>
+        pre {
+            color: green;
+        }
+    </style>
+
+    <link rel="stylesheet" href="css/index.css" />
 </head>
 
 <body>
@@ -37,10 +45,12 @@
             <p><strong>Lorem</strong> ipsum <em>dolor</em> sit amet, consectetur adipisicing elit. Molestias explicabo
                 dolorum dolor mollitia corrupti maiores dignissimos porro repellat, odit cum, consequatur reprehenderit
                 neque quod necessitatibus, quasi optio debitis officiis quidem.</p>
-            <p>Eum ab maiores vel, expedita suscipit iusto sequi ad. Iure neque recusandae repellendus deserunt ratione
+            <p>Eum ab maiores <span class="marcado">vel</span>, expedita suscipit iusto sequi ad. Iure neque recusandae
+                repellendus deserunt ratione
                 repudiandae laborum veniam odio ipsa impedit corporis consectetur quisquam assumenda quae est
                 voluptatibus, accusantium accusamus.</p>
-            <p>Quo <span>vel</span> magnam repudiandae sunt, rerum rem? Iure sequi quos debitis quasi vel unde quod
+            <p>Quo <span class="marcado">vel</span> magnam repudiandae sunt, rerum rem? Iure sequi quos debitis quasi
+                vel unde quod
                 maiores eius inventore aperiam rem, illo earum incidunt optio at perferendis rerum blanditiis,
                 voluptatum quidem?</p>
             <div>
@@ -52,7 +62,7 @@
                     inventore earum?</p>
             </div>
 
-            <p>
+            <p style="color: red">
                 public class Hola {
                 public static void main(String[] args) {
                 System.out.println("Hola mundo");
@@ -156,18 +166,21 @@ public class Hola {
                     <track label="Español" kind="captions" srclang="es" src="resources/myvideo-es.vtt" default>
                 </video>
 
-                <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/SVGjOUnQZ58"
-                    title="YouTube video player"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
+                <div class="iframe-responsive">
+                    <iframe src="https://www.youtube-nocookie.com/embed/SVGjOUnQZ58" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
             </article>
 
             <article id="mapas">
                 <h3>Mapas</h3>
 
-                <iframe title="Mapa de Ipartek"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.762081766632!2d-2.915780684412699!3d43.25640788601541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses!2ses!4v1620667981374!5m2!1ses!2ses"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <div class="iframe-responsive">
+                    <iframe title="Mapa de Ipartek"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.762081766632!2d-2.915780684412699!3d43.25640788601541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses!2ses!4v1620667981374!5m2!1ses!2ses"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </article>
         </section>
 
@@ -282,7 +295,7 @@ public class Hola {
     </aside>
 
     <footer>
-        &copy;2021 Javier Lete García&amp;CIA; los&nbsp;mejores&nbsp;del&nbsp;mundo&nbsp;mundial
+        <p>&copy;2021 Javier Lete García&amp;CIA; los&nbsp;mejores&nbsp;del&nbsp;mundo&nbsp;mundial</p>
     </footer>
 </body>
 
