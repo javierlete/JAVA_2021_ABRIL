@@ -14,7 +14,7 @@
 /* Selectores globales */
 
 body {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Raleway', sans-serif;
   margin: 0;
 }
 
@@ -67,6 +67,10 @@ dd {
   display: inline-block;
   margin: 0;
   width: 74%;
+}
+
+h1, h2, h3, h4 ,h5, h6 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 /* Cabecera */
