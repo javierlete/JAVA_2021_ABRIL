@@ -91,6 +91,7 @@ body > header p {
 body > nav {
   position: sticky;
   top: 0;
+  z-index: 1;
 
   background-color: var(--color-fondo);
   text-align: center;
@@ -274,6 +275,97 @@ footer {
 /* Media queries */
 
 @media (min-width: 768px) {
+  #titulos {
+    grid-area: titulos;
+  }
+
+  #parrafos {
+    grid-area: parrafos;
+  }
+
+  #listas {
+    grid-area: listas;
+  }
+
+  #tablas {
+    grid-area: tablas;
+  }
+
+  #multimedia {
+    grid-area: multimedia;
+  }
+
+  #formularios {
+    grid-area: formularios;
+  }
+
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "titulos parrafos"
+      "listas parrafos"
+      "tablas parrafos"
+      "multimedia multimedia"
+      "formularios formularios"
+  }
+
+  body > nav ul {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  body > nav li:last-child {
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  fieldset:first-of-type {
+    grid-area: basicos;
+  }
+
+  fieldset:nth-of-type(2) {
+    grid-area: extendidos;
+  }
+
+  fieldset:last-of-type {
+    grid-area: botones;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+      "basicos extendidos"
+      "botones extendidos";
+  }
+  
+}
+
+@media (min-width: 1280px) {
+  main {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+      "titulos parrafos parrafos"
+      "listas parrafos parrafos"
+      "multimedia multimedia tablas"
+      "multimedia multimedia formularios"
+  }
+}
+
+@media (min-width: 1440px) {
+  main {
+    grid-template-columns: 1fr 1.5fr 1fr 1fr;
+    grid-template-areas: 
+      "titulos parrafos multimedia multimedia"
+      "listas parrafos multimedia multimedia"
+      "tablas parrafos multimedia multimedia"
+      "formularios formularios formularios formularios"
+  }
+}
+/*
+@media (min-width: 768px) {
     section:not(#formularios,#multimedia), fieldset, #multimedia article {
         display: inline-block;
         width: 49%;
@@ -316,3 +408,4 @@ footer {
         width: 24%;
     }
 }
+*/
