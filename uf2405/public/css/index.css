@@ -2,12 +2,16 @@
   box-sizing: border-box;
 }
 
+/* Variables globales (Custom properties) */
+
 :root {
   --color-fondo: black;
   --color-tinta: white;
   --color-fondo-gris: rgb(233, 233, 233);
   --color-enlaces: rgb(71, 165, 243);
 }
+
+/* Selectores globales */
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -65,6 +69,8 @@ dd {
   width: 74%;
 }
 
+/* Cabecera */
+
 body > header {
   background: var(--color-fondo);
   color: var(--color-tinta);
@@ -80,6 +86,8 @@ body > header p {
   font-variant: small-caps;
 }
 
+/* Menú */
+
 body > nav {
   position: sticky;
   top: 0;
@@ -93,6 +101,9 @@ body > nav ul {
   margin: 0;
   padding: 0;
   list-style: none;
+
+  display: flex;
+  flex-direction: column;
 }
 
 body > nav li {
@@ -111,11 +122,15 @@ body > nav a:hover {
   text-decoration: none;
 }
 
+/* General */
+
 main,
 aside,
 footer {
   padding: 1em;
 }
+
+/* Secciones */
 
 h2 {
   background: var(--color-fondo-gris);
@@ -238,6 +253,8 @@ input, textarea, select, button {
     width: 100%;
 }
 
+/* Anuncios */
+
 aside ul {
     padding-left: 0;
     text-align: center;
@@ -247,16 +264,29 @@ aside li {
     list-style: none;
 }
 
+/* Pie de página */
+
 footer {
   background-color: var(--color-fondo);
   color: var(--color-tinta);
 }
+
+/* Media queries */
 
 @media (min-width: 768px) {
     section:not(#formularios,#multimedia), fieldset, #multimedia article {
         display: inline-block;
         width: 49%;
         vertical-align: top;
+    }
+    
+    body > nav ul {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+
+    body > nav li:last-child {
+      margin-left: auto;
     }
 }
 
