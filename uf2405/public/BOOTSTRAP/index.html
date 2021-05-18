@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Página que sirve de ejemplo sobre HTML y CSS">
+    <meta name="keywords" content="html, css, grid, flex, google, no, lo, hace, ni, puñetero, caso">
+    <meta name="author" content="Javier Lete">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo básico</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+
+<body id="arriba" class="container">
+    <header class="text-center">
+        <h1 class="display-1">Ejemplos HTML</h1>
+        <p class="lead">Pequeños ejemplos de cómo hacer una página web</p>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Ejemplo Bootstrap</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#titulos">Títulos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#parrafos">Párrafos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#listas">Listas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tablas">Tablas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#multimedia">Multimedia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formularios">Formularios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://www.google.es">Google</a></li>
+                    
+                </ul>
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="row">
+        <section id="titulos" class="col-12 col-md-2 order-md-1">
+            <h2>Títulos</h2>
+
+            <h3>Título 3</h3>
+            <h4>Título 4</h4>
+            <h5>Título 5</h5>
+            <h6>Título 6</h6>
+        </section>
+        <section id="parrafos" class="col-12 col-md-10 order-md-4 col-lg-6">
+            <h2>Párrafos</h2>
+
+            <p><strong>Lorem</strong> ipsum <em>dolor</em> sit amet, consectetur adipisicing elit. Molestias explicabo
+                dolorum dolor mollitia corrupti maiores dignissimos porro repellat, odit cum, consequatur reprehenderit
+                neque quod necessitatibus, quasi optio debitis officiis quidem.</p>
+            <p>Eum ab maiores <span class="marcado">vel</span>, expedita suscipit iusto sequi ad. Iure neque recusandae
+                repellendus deserunt ratione
+                repudiandae laborum veniam odio ipsa impedit corporis consectetur quisquam assumenda quae est
+                voluptatibus, accusantium accusamus.</p>
+            <p>Quo <span class="marcado">vel</span> magnam repudiandae sunt, rerum rem? Iure sequi quos debitis quasi
+                vel unde quod
+                maiores eius inventore aperiam rem, illo earum incidunt optio at perferendis rerum blanditiis,
+                voluptatum quidem?</p>
+            <div>
+                <p>Vitae voluptas magni porro consequatur, ea cupiditate ducimus doloremque a. Tempora porro et omnis
+                    distinctio. Iure magnam esse tempora quos omnis sint, reiciendis impedit laudantium perspiciatis
+                    cumque vel, veniam est?</p>
+                <p>Facere quibusdam iure quas impedit, illum quae ducimus ab! Ipsam numquam saepe sunt, aliquam illo
+                    nobis porro, officiis ratione temporibus eius deserunt vel quo rem architecto aspernatur quos
+                    inventore earum?</p>
+            </div>
+
+            <p>
+                public class Hola {
+                public static void main(String[] args) {
+                System.out.println("Hola mundo");
+                }
+                }
+            </p>
+            <pre>
+public class Hola {
+    public static void main(String[] args) {
+        System.out.println("Hola mundo");
+    }
+}
+            </pre>
+        </section>
+        <section id="listas" class="col-12 col-sm-6 order-md-2 col-lg-2">
+            <h2>Listas</h2>
+
+            <!-- ul>li*3>{Elemento $}^^ol>li*3>{Ordenado $}^^dl>(dt>{Término $}^dd>{Definición $})*3 -->
+            <ul>
+                <li>Elemento 1</li>
+                <li>Elemento 2</li>
+                <li>Elemento 3</li>
+            </ul>
+            <ol>
+                <li>Ordenado 1</li>
+                <li>Ordenado 2</li>
+                <li>Ordenado 3</li>
+            </ol>
+            <dl>
+                <dt>HTML</dt>
+                <dd>Lenguaje de marcas para definir el contenido de la página</dd>
+                <dt>CSS</dt>
+                <dd>Lenguaje para definir el aspecto de una página web</dd>
+                <dt>JavaScript</dt>
+                <dd>Lenguaje para definir el comportamiento de una página web</dd>
+            </dl>
+        </section>
+        <section id="tablas" class="col-12 col-sm-6 order-md-3 col-lg-2">
+            <h2>Tablas</h2>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered table-sm">
+                    <caption>Tabla de ejemplo</caption>
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Javier</td>
+                            <td>Lete</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Pepe</td>
+                            <td>Pérezarrigomulakoetxeamekaguenlaqueletrajodepaseocuandose</td>
+                        </tr>
+                    </tbody>
+
+                    <tfoot class="table-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellidos</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </section>
+        <section id="multimedia" class="col-12 order-md-5 col-lg-6">
+            <h2>Multimedia</h2>
+
+            <article id="imagen">
+                <h3>Imágen</h3>
+
+
+                <figure class="figure">
+                    <img class="figure-img img-thumbnail rounded" src="imgs/arcos.jpg"
+                        alt="Pasillo que está cubierto por arcos" />
+
+                    <figcaption class="figure-caption text-end">Arcos</figcaption>
+                </figure>
+
+            </article>
+
+            <article id="sonido">
+                <h3>Sonido</h3>
+
+                <audio class="w-100" src="sounds/horse.mp3" controls></audio>
+
+                <iframe class="w-100" title="Moon Safari"
+                    src="https://open.spotify.com/embed/artist/0Wr0oT0aCD6w7O25TPwnoX" width="300" height="380"
+                    allow="encrypted-media"></iframe>
+            </article>
+
+            <article id="video">
+                <h3>Video</h3>
+
+                <video class="w-100" src="videos/mov_bbb.mp4" controls="controls">
+                    <track label="Español" kind="captions" srclang="es" src="resources/myvideo-es.vtt" default>
+                </video>
+
+                <div class="ratio ratio-4x3">
+                    <iframe src="https://www.youtube-nocookie.com/embed/SVGjOUnQZ58" title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </article>
+
+            <article id="mapas">
+                <h3>Mapas</h3>
+
+                <div class="ratio ratio-1x1">
+                    <iframe title="Mapa de Ipartek"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2905.762081766632!2d-2.915780684412699!3d43.25640788601541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4e4fb46238d865%3A0xb671edfb1120ab06!2sIpartek%20Servicios%20Inform%C3%A1ticos!5e0!3m2!1ses!2ses!4v1620667981374!5m2!1ses!2ses"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </article>
+        </section>
+
+        <section id="formularios" class="col-12 order-md-5 col-lg-6">
+            <h3>Formularios</h3>
+
+            <form class="row">
+                <fieldset class="col-xxl-6">
+                    <legend>Básicos</legend>
+
+                    <div>
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" pattern="\p{L}+" minlength="2" maxlength="20" placeholder="Tu nombre" />
+                    </div>
+
+                    <div>
+                        <label for="apellidos">Apellidos</label>
+                        <input id="apellidos" placeholder="Tus apellidos" />
+                    </div>
+                </fieldset>
+                <fieldset class="col-xxl-6">
+                    <legend>Extendidos</legend>
+
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Email del trabajo" />
+                    </div>
+
+                    <div>
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" placeholder="Tu teléfono habitual" />
+                    </div>
+
+                    <div>
+                        <label for="web">Tu web</label>
+                        <input type="url" id="web" placeholder="Tu página web" />
+                    </div>
+
+                    <div>
+                        <label for="hijos">Número de hijos</label>
+                        <input type="number" min="0" max="10" id="hijos" placeholder="Los que tienes en tu casa" />
+                    </div>
+
+                    <div>
+                        <label for="fecha">Fecha de nacimiento</label>
+                        <input type="date" id="fecha" />
+                    </div>
+
+                    <div>
+                        <label for="activo">Activo</label>
+                        <input type="checkbox" id="activo" />
+                    </div>
+
+                    <div>
+                        <label for="grupo1">Grupo 1</label>
+                        <input type="radio" id="grupo1" name="grupo" />
+                        <label for="grupo2">Grupo 2</label>
+                        <input type="radio" id="grupo2" name="grupo" />
+                        <label for="grupo3">Grupo 3</label>
+                        <input type="radio" id="grupo3" name="grupo" />
+                    </div>
+
+                    <div>
+                        <label for="pais">País</label>
+                        <select id="pais">
+                            <option>España</option>
+                            <option>Francia</option>
+                            <option>Portugal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="paises">Paises que te gustan</label>
+                        <select multiple id="paises">
+                            <option>España</option>
+                            <option>Francia</option>
+                            <option>Portugal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="color">Color preferido</label>
+                        <input type="color" id="color" />
+                    </div>
+
+                    <div>
+                        <label for="comentarios">Comentarios</label>
+                        <textarea id="comentarios"></textarea>
+                    </div>
+
+                    <div>
+                        <label for="presupuesto">¿Cuánto es el máximo de tu presupuesto?</label>
+                        <input type="number" min="0" step=".01" id="presupuesto" />
+                    </div>
+
+                </fieldset>
+                <fieldset class="col-xxl-6">
+                    <legend>Botones</legend>
+
+                    <button>Aceptar</button>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+
+    <aside>
+        <ul class="list-unstyled">
+            <li><a href="#">Enlace 1</a></li>
+            <li><a href="#">Enlace 2</a></li>
+            <li><a href="#">Enlace 3</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <a href="#arriba">^</a>
+        <p>&copy;2021 Javier Lete García&amp;CIA; los&nbsp;mejores&nbsp;del&nbsp;mundo&nbsp;mundial</p>
+        <p>Nuestras redes sociales:
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </p>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
