@@ -1,23 +1,20 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const inputDni = document.querySelector('#dni');
-    const form = document.querySelector('form');
+$(function () {
+    const $inputDni = $('#dni');
+    const $form = $('form');
 
-    form.addEventListener('submit', function (e) {
+    $('form button').on('click', function (e) {
         e.preventDefault();
 
-        console.log(inputDni.value);
+        console.log($inputDni.val());
 
-        if (dniValido(inputDni.value)) {
-            form.submit();
+        if (dniValido($inputDni.val())) {
+            $form.submit();
         } else {
             //inputDni.style.border = '1px solid red';
 
-            if (!inputDni.classList.contains('error')) {
-                inputDni.classList.add('error');
-                const span = document.createElement('span');
-                span.className = 'error';
-                span.innerHTML = 'El DNI es incorrecto';
-                inputDni.insertAdjacentElement("afterend", span);
+            if (!$inputDni.hasClass('error')) {
+                $inputDni.addClass('error').after(
+                    $('<span class="error">El DNI es incorrecto</span>'));
             }
         }
     });
