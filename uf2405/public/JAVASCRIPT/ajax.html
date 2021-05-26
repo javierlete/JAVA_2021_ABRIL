@@ -8,8 +8,39 @@
     <script src="js/ajax.js"></script>
 </head>
 <body>
-    <ul id="lista">
+    <table>
+        <caption>Clientes</caption>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
 
-    </ul>
+            </tr>
+        </tbody>
+    </table>
+
+    <form>
+        <div>
+            <label for="id">Id</label>
+            <input type="number" readonly id="id" />
+        </div>
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" />
+        </div>
+        <div>
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" />
+        </div>
+        <div>
+            <button>Aceptar</button>
+        </div>
+    </form>
 </body>
 </html>
