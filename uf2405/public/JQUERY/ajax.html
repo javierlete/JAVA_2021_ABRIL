@@ -9,8 +9,34 @@
     <script src="js/ajax.js"></script>
 </head>
 <body>
-    <ul id="lista">
+    <table>
+        <caption>Clientes</caption>
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
 
-    </ul>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a href="javascript:editar()">Añadir</a></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <form>
+        <input id="id" readonly placeholder="id"/>
+        <input id="nombre" placeholder="nombre"/>
+        <input id="apellido" placeholder="apellido"/>
+        <button>Aceptar</button>
+    </form>
 </body>
 </html>
