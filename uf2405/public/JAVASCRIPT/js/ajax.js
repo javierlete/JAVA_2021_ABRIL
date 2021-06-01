@@ -1,27 +1,7 @@
 const URL = 'http://localhost:3000/clientes/';
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const respuesta = await fetch(URL);
-    const clientes = await respuesta.json();
-
-    console.log(clientes);
-
-    const tbody = document.querySelector('tbody');
-    let tr;
-
-    clientes.forEach((cliente) => {
-        tr = document.createElement('tr');
-        tr.innerHTML = `
-            <th>${cliente.id}</th>
-            <td>${cliente.nombre}</td>
-            <td>${cliente.apellido}</td>
-            <td>
-                <a class="btn btn-primary" href="javascript:editar(${cliente.id})">Editar</a>
-                <a class="btn btn-danger" href="javascript:borrar(${cliente.id})">Borrar</a>
-            </td>`;
-
-        tbody.appendChild(tr);
-    });
+    await refrescarTabla();
 
     document.querySelector('form').addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -55,8 +35,35 @@ document.addEventListener('DOMContentLoaded', async () => {
                 body: JSON.stringify(cliente)
             });
         }
+        await refrescarTabla();
     });
 });
+
+async function refrescarTabla() {
+    const respuesta = await fetch(URL);
+    const clientes = await respuesta.json();
+
+    console.log(clientes);
+
+    const tbody = document.querySelector('tbody');
+    let tr;
+
+    tbody.innerHTML = '';
+
+    clientes.forEach((cliente) => {
+        tr = document.createElement('tr');
+        tr.innerHTML = `
+            <th>${cliente.id}</th>
+            <td>${cliente.nombre}</td>
+            <td>${cliente.apellido}</td>
+            <td>
+                <a class="btn btn-primary" href="javascript:editar(${cliente.id})">Editar</a>
+                <a class="btn btn-danger" href="javascript:borrar(${cliente.id})">Borrar</a>
+            </td>`;
+
+        tbody.appendChild(tr);
+    });
+}
 
 async function editar(id) {
     console.log('EDITAR', id);
@@ -77,6 +84,8 @@ async function borrar(id) {
     await fetch(URL + id, { method: 'DELETE' });
 
     console.log('Borrado');
+
+    await refrescarTabla();
 }
 
 // ES2015
