@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.uf2406.accesodatos.UsuarioDao;
 import com.ipartek.formacion.uf2406.modelos.Usuario;
 
 @WebServlet("/login")
@@ -29,10 +30,12 @@ public class LoginServlet extends HttpServlet {
 		Usuario usuario = new Usuario(null, email, password, null);
 		
 		// 3. Procesar la información
-		if(validarUsuario(usuario)) {
+		Usuario usuarioValidado = validarUsuario(usuario);
+		
+		if(usuarioValidado != null) {
 			// Login correcto
 			// 4. Preparar información para la siguiente pantalla
-			request.getSession().setAttribute("usuario", obtenerUsuarioPorId(1L));
+			request.getSession().setAttribute("usuario", usuarioValidado);
 			// 5. Mandar la petición a la siguiente pantalla
 			request.getRequestDispatcher(PRINCIPAL_JSP).forward(request, response);
 		} else {
@@ -45,12 +48,14 @@ public class LoginServlet extends HttpServlet {
 		}
 	}
 
-	private boolean validarUsuario(Usuario usuario) {
-		return "javier@email.net".equals(usuario.getEmail()) && "contra".equals(usuario.getPassword());
+	private Usuario validarUsuario(Usuario usuario) {
+		// return "javier@email.net".equals(usuario.getEmail()) && "contra".equals(usuario.getPassword());
+		
+		Usuario usuarioEncontrado = UsuarioDao.obtenerPorEmail(usuario.getEmail());
+		
+		if( usuarioEncontrado != null && usuarioEncontrado.getPassword().equals(usuario.getPassword()))
+			return usuarioEncontrado;
+		else
+			return null;
 	}
-	
-	private Usuario obtenerUsuarioPorId(Long id) {
-		return new Usuario(id, "javier@email.net", "contra", "Javier");
-	}
-	
 }
