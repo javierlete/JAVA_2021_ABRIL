@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.uf2406.modelos.Usuario;
+
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final String PRINCIPAL_JSP = "/WEB-INF/vistas/principal.jsp";
@@ -23,22 +25,32 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		// 2. Procesar la información
-		if("javier@email.net".equals(email) && "contra".equals(password)) {
+		// 2. Empaquetar la información en objetos del modelo
+		Usuario usuario = new Usuario(null, email, password, null);
+		
+		// 3. Procesar la información
+		if(validarUsuario(usuario)) {
 			// Login correcto
-			// 3. Preparar información para la siguiente pantalla
-			request.getSession().setAttribute("email", email);
-			// 4. Mandar la petición a la siguiente pantalla
+			// 4. Preparar información para la siguiente pantalla
+			request.getSession().setAttribute("usuario", obtenerUsuarioPorId(1L));
+			// 5. Mandar la petición a la siguiente pantalla
 			request.getRequestDispatcher(PRINCIPAL_JSP).forward(request, response);
 		} else {
 			// Login incorrecto
-			// 3. Preparar información para la siguiente pantalla
-			request.setAttribute("email", email);
+			// 4. Preparar información para la siguiente pantalla
+			request.setAttribute("usuario", usuario);
 			request.setAttribute("error", "Usuario o contraseña incorrectos");
-			// 4. Mandar la petición a la siguiente pantalla
+			// 5. Mandar la petición a la siguiente pantalla
 			request.getRequestDispatcher(LOGIN_JSP).forward(request, response);
 		}
 	}
+
+	private boolean validarUsuario(Usuario usuario) {
+		return "javier@email.net".equals(usuario.getEmail()) && "contra".equals(usuario.getPassword());
+	}
 	
+	private Usuario obtenerUsuarioPorId(Long id) {
+		return new Usuario(id, "javier@email.net", "contra", "Javier");
+	}
 	
 }

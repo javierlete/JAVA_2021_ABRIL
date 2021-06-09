@@ -7,6 +7,6 @@
 <title>Principal</title>
 </head>
 <body>
-	<h1>Hola ${email}</h1>
+	<h1>Hola ${usuario.nombre}</h1>
 </body>
 </html>
