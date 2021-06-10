@@ -39,7 +39,7 @@
 				<td></td>
 				<td></td>
 				<td>
-					<a href="#">Añadir</a>
+					<a href="producto">Añadir</a>
 				</td>
 			</tr>
 		</tfoot>
