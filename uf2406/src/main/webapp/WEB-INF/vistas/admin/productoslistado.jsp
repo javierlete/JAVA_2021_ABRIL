@@ -15,6 +15,7 @@
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Precio</th>
+				<th>Opciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -25,9 +26,23 @@
 					<th>${producto.id}</th>
 					<td>${producto.nombre}</td>
 					<td>${producto.precio}</td>
+					<td>
+						<a href="#">Editar</a>
+						<a href="#">Borrar</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>
+					<a href="#">Añadir</a>
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 
 </body>
