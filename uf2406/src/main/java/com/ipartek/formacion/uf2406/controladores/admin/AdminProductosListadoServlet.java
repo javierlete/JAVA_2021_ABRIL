@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.formacion.uf2406.accesodatos.ProductoDao;
 
-@WebServlet("/admin/productos/listado")
+@WebServlet("/admin/productos")
 public class AdminProductosListadoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
