@@ -7,11 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ipartek.formacion.uf2406.accesodatos.ProductoDao;
+
 @WebServlet("/admin/producto")
 public class AdminProductosDetalleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		
+		if(id != null) {
+			request.setAttribute("producto", ProductoDao.obtenerPorId(Long.parseLong(id)));
+		}
+		
 		request.getRequestDispatcher("/WEB-INF/vistas/admin/productodetalle.jsp").forward(request, response);
 	}
 

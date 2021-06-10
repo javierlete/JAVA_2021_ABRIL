@@ -10,14 +10,14 @@
 
 	<form action="producto" method="post">
 		<div>
-			<label for="id">Id</label> <input type="number" name="id" />
+			<label for="id">Id</label> <input type="number" readonly name="id" value="${producto.id}" />
 		</div>
 		<div>
-			<label for="nombre">Nombre</label> <input type="text" name="nombre" />
+			<label for="nombre">Nombre</label> <input type="text" name="nombre" value="${producto.nombre}"/>
 		</div>
 		<div>
 			<label for="precio">Precio</label> <input type="number" step=".01"
-				name="precio" />
+				name="precio" value="${producto.precio}" />
 		</div>
 		<div>
 			<button>Aceptar</button>
