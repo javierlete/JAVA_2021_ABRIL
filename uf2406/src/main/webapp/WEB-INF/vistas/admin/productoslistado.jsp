@@ -28,7 +28,7 @@
 					<td>${producto.precio}</td>
 					<td>
 						<a href="#">Editar</a>
-						<a href="#">Borrar</a>
+						<a onclick="javascript: return confirm('¿Estás seguro de querer borrar el registro cuyo id es ${producto.id}?')" href="borrar?id=${producto.id}">Borrar</a>
 					</td>
 				</tr>
 			</c:forEach>
