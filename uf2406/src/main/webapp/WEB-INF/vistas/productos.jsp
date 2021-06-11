@@ -10,26 +10,34 @@
 </head>
 <body>
 
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Precio</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%-- Repetimos por cada producto dentro de productos --%>
-			<c:forEach items="${productos}" var="producto">
+	<form method="post">
+		<table>
+			<thead>
 				<tr>
-					<%-- <%= producto.getId() %> --%>
-					<th>${producto.id}</th>
-					<td>${producto.nombre}</td>
-					<td>${producto.precio}</td>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Precio</th>
+					<th>Cantidad</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<%-- Repetimos por cada producto dentro de productos --%>
+				<c:forEach items="${productos}" var="producto">
+					<tr>
+						<%-- <%= producto.getId() %> --%>
+						<th>${producto.id}</th>
+						<td>${producto.nombre}</td>
+						<td>${producto.precio}</td>
+						<td><input type="number" required min="0"
+							name="${producto.id}" value="0" /></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
+		<button>Comprar</button>
+
+	</form>
 
 </body>
 </html>
