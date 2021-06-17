@@ -19,9 +19,9 @@
 				<th>${producto.id}</th>
 				<td>${producto.nombre}</td>
 				<td>${producto.precio}</td>
-				<td><a class="btn btn-primary" href="producto?id=${producto.id}">Editar</a> <a class="btn btn-danger"
+				<td><a class="btn btn-primary" href="admin/producto?id=${producto.id}">Editar</a> <a class="btn btn-danger"
 					onclick="javascript: return confirm('¿Estás seguro de querer borrar el registro cuyo id es ${producto.id}?')"
-					href="borrar?id=${producto.id}">Borrar</a></td>
+					href="admin/borrar?id=${producto.id}">Borrar</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -30,7 +30,7 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><a class="btn btn-primary" href="producto">Añadir</a></td>
+			<td><a class="btn btn-primary" href="admin/producto">Añadir</a></td>
 		</tr>
 	</tfoot>
 </table>

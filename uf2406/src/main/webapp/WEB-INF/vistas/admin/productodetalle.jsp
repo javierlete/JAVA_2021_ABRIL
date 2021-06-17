@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/vistas/includes/cabecera.jsp"%>
 
-<form action="producto" method="post">
+<form action="admin/producto" method="post">
 	<div>
 		<label class="form-label" for="id">Id</label> <input class="form-control" type="number" readonly name="id"
 			value="${producto.id}" />
