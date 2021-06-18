@@ -1,7 +1,6 @@
 package com.ipartek.formacion.uf2406.controladores.admin;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +13,7 @@ import com.ipartek.formacion.uf2406.modelos.Producto;
 
 @WebServlet("/admin/producto")
 public class AdminProductosDetalleServlet extends HttpServlet {
+	private static final String PRODUCTODETALLE_JSP = "/WEB-INF/vistas/admin/productodetalle.jsp";
 	private static final long serialVersionUID = 1L;
        
 	@Override
@@ -24,7 +24,7 @@ public class AdminProductosDetalleServlet extends HttpServlet {
 			request.setAttribute("producto", ProductoDao.obtenerPorId(Long.parseLong(id)));
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/vistas/admin/productodetalle.jsp").forward(request, response);
+		request.getRequestDispatcher(PRODUCTODETALLE_JSP).forward(request, response);
 	}
 
 	@Override
@@ -35,15 +35,15 @@ public class AdminProductosDetalleServlet extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String precio = request.getParameter("precio");
 		
-		Long lId = null;
+		Producto producto = new Producto(id, nombre, precio);
 		
-		if(id != null && id.trim().length() > 0) {
-			lId = Long.parseLong(id);
+		if(producto.getErrores().size() != 0) {
+			request.setAttribute("producto", producto);
+			request.getRequestDispatcher(PRODUCTODETALLE_JSP).forward(request, response);
+			return;
 		}
 		
-		Producto producto = new Producto(lId, nombre, new BigDecimal(precio));
-		
-		if(lId != null) {
+		if(producto.getId() != null) {
 			ProductoDao.modificar(producto);
 		} else {
 			ProductoDao.insertar(producto);

@@ -1,32 +1,45 @@
 package com.ipartek.formacion.uf2406.modelos;
 
 import java.math.BigDecimal;
+import java.util.TreeMap;
 
 public class Producto {
 	private Long id;
 	private String nombre;
 	private BigDecimal precio;
 	private Integer cantidad;
+	
+	private TreeMap<String, String> errores = new TreeMap<>();
 
+	public Producto(String id, String nombre, String precio) {
+		setId(id);
+		setNombre(nombre);
+		setPrecio(precio);
+	}
+	
 	public Producto(Long id, String nombre, BigDecimal precio, Integer cantidad) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.precio = precio;
-		this.cantidad = cantidad;
+		setId(id);
+		setNombre(nombre);
+		setPrecio(precio);
+		setCantidad(cantidad);
 	}
 
 	public Producto(Long id, String nombre, BigDecimal precio) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.precio = precio;
+		this(id, nombre, precio, null);
 	}
 
 	public Long getId() {
 		return id;
 	}
 
+	public void setId(String id) {
+		Long lId = null;
+		
+		if(id != null && id.trim().length() > 0) {
+			lId = Long.parseLong(id);
+		}
+	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -36,6 +49,9 @@ public class Producto {
 	}
 
 	public void setNombre(String nombre) {
+		if(nombre == null || nombre.trim().length() == 0) {
+			errores.put("nombre", "No se admite un nombre vacío"); 
+		}
 		this.nombre = nombre;
 	}
 
@@ -43,7 +59,18 @@ public class Producto {
 		return precio;
 	}
 
+	public void setPrecio(String precio) {
+		try {
+			setPrecio(new BigDecimal(precio));
+		} catch (Exception e) {
+			errores.put("precio", "La próxima vez introduce un número");
+		}
+	}
+	
 	public void setPrecio(BigDecimal precio) {
+		if(precio == null || precio.compareTo(BigDecimal.ZERO) < 0) {
+			errores.put("precio", "El precio debe ser mayor o igual que 0");
+		}
 		this.precio = precio;
 	}
 
@@ -55,6 +82,10 @@ public class Producto {
 		this.cantidad = cantidad;
 	}
 
+	public TreeMap<String, String> getErrores() {
+		return errores;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
