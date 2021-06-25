@@ -14,6 +14,13 @@ public class PersonaDao {
 	private static final String USUARIO_BD = "root";
 	private static final String PASSWORD_BD = "admin";
 
+	static {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			throw new AccesoDatosException("No se ha encontrado el driver", e);
+		}
+	}
 	private static Connection obtenerConexion() {
 		try {
 			return DriverManager.getConnection(URL_BD, USUARIO_BD, PASSWORD_BD);
