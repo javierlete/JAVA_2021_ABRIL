@@ -27,7 +27,19 @@ public class PersonaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String id = request.getParameter("id");
+		String nombre = request.getParameter("nombre");
+		String apellidos = request.getParameter("apellidos");
 		
+		Persona persona = new Persona(id, nombre, apellidos);
+		
+		if(persona.getId() == null) {
+			PersonaDao.insertar(persona);
+		} else {
+			PersonaDao.modificar(persona);
+		}
+		
+		response.sendRedirect(request.getContextPath() + "/admin");
 	}
 
 }

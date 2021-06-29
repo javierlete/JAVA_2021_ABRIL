@@ -5,6 +5,14 @@ public class Persona {
 	private String nombre;
 	private String apellidos;
 	
+	public Persona(String id, String nombre, String apellidos) {
+		setId(id);
+		setNombre(nombre);
+		setApellidos(apellidos);
+	}
+	
+	
+
 	public Persona(Long id, String nombre, String apellidos) {
 		super();
 		this.id = id;
@@ -17,6 +25,13 @@ public class Persona {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public void setId(String id) {
+		if(id == null || id.trim().length() == 0) {
+			setId((Long)null);
+		} else {
+			setId(Long.parseLong(id));
+		}
 	}
 	public String getNombre() {
 		return nombre;
