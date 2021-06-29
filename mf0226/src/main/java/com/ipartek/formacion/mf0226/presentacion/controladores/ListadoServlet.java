@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ipartek.formacion.mf0226.accesodatos.PersonaDao;
 import com.ipartek.formacion.mf0226.entidades.Persona;
 
-@WebServlet("/listado")
+@WebServlet("/admin")
 public class ListadoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
