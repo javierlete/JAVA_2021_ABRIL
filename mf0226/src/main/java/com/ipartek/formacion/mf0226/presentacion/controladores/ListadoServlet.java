@@ -17,12 +17,15 @@ public class ListadoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/plain");
-		PrintWriter out = response.getWriter();
+		request.setAttribute("personas", PersonaDao.obtenerTodos());
+		request.getRequestDispatcher("/WEB-INF/vistas/index.jsp").forward(request, response);
 		
-		for (Persona persona : PersonaDao.obtenerTodos()) {
-			out.println(persona);
-		}
+//		response.setContentType("text/plain");
+//		PrintWriter out = response.getWriter();
+		
+//		for (Persona persona : PersonaDao.obtenerTodos()) {
+//			out.println(persona);
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
