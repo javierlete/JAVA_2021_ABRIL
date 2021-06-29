@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Personal</title>
 
+<base href="${pageContext.request.contextPath}/" />
+
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 
 </head>
