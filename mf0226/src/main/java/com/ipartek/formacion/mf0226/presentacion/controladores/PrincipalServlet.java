@@ -1,4 +1,4 @@
-package com.ipartek.formacion.mf0226.presentacion.controladores.admin;
+package com.ipartek.formacion.mf0226.presentacion.controladores;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
