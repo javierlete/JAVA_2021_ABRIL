@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,10 +29,17 @@
 						aria-current="page" href="#">Principal</a></li>
 					<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
 				</ul>
+				<span class="navbar-text">${sessionScope.usuario.email}</span>
 				<ul class="navbar-nav mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link"
-						aria-current="page" href="login">Inicio de sesión</a></li>
-					<li class="nav-item"><a class="nav-link" href="logout">Salir</a></li>
+					<c:choose>
+						<c:when test="${sessionScope.usuario == null}">
+							<li class="nav-item"><a class="nav-link" aria-current="page"
+								href="login">Inicio de sesión</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="nav-item"><a class="nav-link" href="logout">Salir</a></li>
+						</c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</div>
