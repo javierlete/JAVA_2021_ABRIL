@@ -1,4 +1,4 @@
-package com.ipartek.formacion.mf0226.presentacion.controladores;
+package com.ipartek.formacion.mf0226.presentacion.controladores.admin;
 
 import java.io.IOException;
 
@@ -23,7 +23,7 @@ public class PersonaServlet extends HttpServlet {
 			request.setAttribute("persona", persona);
 		}
 		
-		request.getRequestDispatcher("/WEB-INF/vistas/persona.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/vistas/admin/persona.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
