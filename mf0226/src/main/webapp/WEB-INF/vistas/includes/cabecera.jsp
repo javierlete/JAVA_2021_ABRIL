@@ -44,4 +44,17 @@
 			</div>
 		</div>
 	</nav>
+	<c:if test="${textoMensaje != null}">
+		<div class="alert alert-${tipoMensaje} alert-dismissible fade show"
+			role="alert">
+			${textoMensaje}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+		
+		<% 
+		session.removeAttribute("textoMensaje");
+		session.removeAttribute("tipoMensaje");
+		%>
+	</c:if>
 	<main class="container">

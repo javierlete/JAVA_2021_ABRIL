@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ipartek.formacion.mf0226.accesodatos.UsuarioDao;
 import com.ipartek.formacion.mf0226.entidades.Usuario;
@@ -22,13 +23,18 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
 		Usuario usuario = UsuarioDao.obtenerPorEmail(email);
 
 		if (usuario != null && usuario.getPassword().equals(password)) {
-			request.getSession().setAttribute("usuario", usuario);
+			session.setAttribute("textoMensaje", "El usuario ha iniciado sesión correctamente");
+			session.setAttribute("tipoMensaje", "success");
+			
+			session.setAttribute("usuario", usuario);
 
 			if ("ADMIN".equals(usuario.getRol())) {
 				response.sendRedirect(request.getContextPath() + "/admin");
@@ -37,6 +43,10 @@ public class LoginServlet extends HttpServlet {
 			}
 		} else {
 			usuario = new Usuario(null, email, null, null);
+			
+			request.setAttribute("textoMensaje", "Usuario o contraseña incorrectos");
+			request.setAttribute("tipoMensaje", "danger");
+			
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
 		}
