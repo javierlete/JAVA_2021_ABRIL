@@ -15,7 +15,15 @@ public class ListadoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("personas", PersonaDao.obtenerTodos());
+		try {
+			request.setAttribute("personas", PersonaDao.obtenerTodos());
+			
+//			request.setAttribute("textoMensaje", "Personas obtenidas correctamente");
+//			request.setAttribute("tipoMensaje", "success");
+		} catch (Exception e) {
+			request.setAttribute("textoMensaje", "No se han podido obtener las personas");
+			request.setAttribute("tipoMensaje", "danger");
+		}
 		request.getRequestDispatcher("/WEB-INF/vistas/admin/index.jsp").forward(request, response);
 		
 //		response.setContentType("text/plain");
