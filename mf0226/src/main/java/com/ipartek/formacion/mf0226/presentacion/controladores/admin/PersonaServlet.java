@@ -14,6 +14,7 @@ import com.ipartek.formacion.mf0226.entidades.Persona;
 
 @WebServlet("/admin/persona")
 public class PersonaServlet extends HttpServlet {
+	private static final String PERSONA_JSP = "/WEB-INF/vistas/admin/persona.jsp";
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +34,7 @@ public class PersonaServlet extends HttpServlet {
 			}
 		}
 
-		request.getRequestDispatcher("/WEB-INF/vistas/admin/persona.jsp").forward(request, response);
+		request.getRequestDispatcher(PERSONA_JSP).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,6 +47,12 @@ public class PersonaServlet extends HttpServlet {
 
 		Persona persona = new Persona(id, nombre, apellidos);
 
+		if(persona.getErrores().size() > 0) {
+			request.setAttribute("persona", persona);
+			request.getRequestDispatcher(PERSONA_JSP).forward(request, response);
+			return;
+		}
+		
 		if (persona.getId() == null) {
 			try {
 				PersonaDao.insertar(persona);

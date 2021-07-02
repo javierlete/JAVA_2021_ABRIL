@@ -1,9 +1,13 @@
 package com.ipartek.formacion.mf0226.entidades;
 
+import java.util.TreeMap;
+
 public class Persona {
 	private Long id;
 	private String nombre;
 	private String apellidos;
+
+	private TreeMap<String, String> errores = new TreeMap<>();
 	
 	public Persona(String id, String nombre, String apellidos) {
 		setId(id);
@@ -11,8 +15,6 @@ public class Persona {
 		setApellidos(apellidos);
 	}
 	
-	
-
 	public Persona(Long id, String nombre, String apellidos) {
 		super();
 		this.id = id;
@@ -37,13 +39,23 @@ public class Persona {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
+		if(nombre == null || nombre.trim().length() == 0) {
+			errores.put("nombre", "El nombre es obligatorio");
+		}
 		this.nombre = nombre;
 	}
 	public String getApellidos() {
 		return apellidos;
 	}
 	public void setApellidos(String apellidos) {
+		if(apellidos == null || apellidos.trim().length() == 0) {
+			errores.put("apellidos", "Los apellidos son obligatorios");
+		}
 		this.apellidos = apellidos;
+	}
+
+	public TreeMap<String, String> getErrores() {
+		return errores;
 	}
 
 	@Override
