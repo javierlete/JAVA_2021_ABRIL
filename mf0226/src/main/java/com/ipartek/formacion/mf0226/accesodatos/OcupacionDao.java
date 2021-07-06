@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ipartek.formacion.mf0226.entidades.Ocupacion;
-import com.ipartek.formacion.mf0226.entidades.Persona;
 
-public class PersonaDao {
+public class OcupacionDao {
 	private static final String URL_BD = "jdbc:mysql://localhost:3306/mf0226";
 	private static final String USUARIO_BD = "root";
 	private static final String PASSWORD_BD = "admin";
@@ -30,74 +29,71 @@ public class PersonaDao {
 		}
 	}
 
-	public static Iterable<Persona> obtenerTodos() {
+	public static Iterable<Ocupacion> obtenerTodos() {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("SELECT * FROM personas");
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM ocupaciones");
 				ResultSet rs = ps.executeQuery()) {
-			ArrayList<Persona> personas = new ArrayList<>();
+			ArrayList<Ocupacion> ocupaciones = new ArrayList<>();
 
 			while (rs.next()) {
-				personas.add(new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos")));
+				ocupaciones.add(new Ocupacion(rs.getLong("id"), rs.getString("nombre"), rs.getString("descripcion")));
 			}
 
-			return personas;
+			return ocupaciones;
 		} catch (SQLException e) {
 			throw new AccesoDatosException("No se han podido obtener los registros", e);
 		}
 
 	}
 
-	public static Persona obtenerPorId(Long id) {
+	public static Ocupacion obtenerPorId(Long id) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("SELECT * FROM personas WHERE id = ?")) {
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM ocupaciones WHERE id = ?")) {
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 
-			Persona persona = null;
+			Ocupacion ocupacion = null;
 
 			if (rs.next()) {
-				persona = new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos"));
-				persona.setOcupacion(new Ocupacion(rs.getLong("ocupaciones_id"), null, null));
+				ocupacion = new Ocupacion(rs.getLong("id"), rs.getString("nombre"), rs.getString("descripcion"));
 			}
 
-			return persona;
+			return ocupacion;
 		} catch (SQLException e) {
 			throw new AccesoDatosException("No se ha podido obtener el registro " + id, e);
 		}
 	}
 
-	public static void insertar(Persona persona) {
+	public static void insertar(Ocupacion ocupacion) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("INSERT INTO personas (nombre, apellidos, ocupaciones_id) VALUES (?,?,?)")) {
-			ps.setString(1, persona.getNombre());
-			ps.setString(2, persona.getApellidos());
-			ps.setLong(3, persona.getOcupacion().getId());
+				PreparedStatement ps = con.prepareStatement("INSERT INTO ocupaciones (nombre, descripcion) VALUES (?,?)")) {
+			ps.setString(1, ocupacion.getNombre());
+			ps.setString(2, ocupacion.getDescripcion());
 			
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new AccesoDatosException("No se ha podido insertar el registro " + persona, e);
+			throw new AccesoDatosException("No se ha podido insertar el registro " + ocupacion, e);
 		}
 	}
 	
-	public static void modificar(Persona persona) {
+	public static void modificar(Ocupacion ocupacion) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("UPDATE personas SET nombre=?,apellidos=?,ocupaciones_id=? WHERE id=?")) {
-			ps.setString(1, persona.getNombre());
-			ps.setString(2, persona.getApellidos());
-			ps.setLong(3, persona.getOcupacion().getId());
-			ps.setLong(4, persona.getId());
+				PreparedStatement ps = con.prepareStatement("UPDATE ocupaciones SET nombre=?,descripcion=? WHERE id=?")) {
+			ps.setString(1, ocupacion.getNombre());
+			ps.setString(2, ocupacion.getDescripcion());
+			ps.setLong(3, ocupacion.getId());
 			
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new AccesoDatosException("No se ha podido modificar el registro " + persona, e);
+			throw new AccesoDatosException("No se ha podido modificar el registro " + ocupacion, e);
 		}
 	}
 	
 	public static void borrar(Long id) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("DELETE FROM personas WHERE id=?")) {
+				PreparedStatement ps = con.prepareStatement("DELETE FROM ocupaciones WHERE id=?")) {
 			ps.setLong(1, id);
 			
 			ps.executeUpdate();

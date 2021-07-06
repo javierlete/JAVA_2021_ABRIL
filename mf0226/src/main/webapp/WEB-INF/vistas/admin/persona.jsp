@@ -24,6 +24,17 @@
 			<div class="invalid-feedback">${persona.errores.apellidos}</div>
 		</div>
 	</div>
+	
+	<div class="row mb-3">
+		<label for="ocupacion" class="col-sm-2 col-form-label">Ocupacion</label>
+		<div class="col-sm-10">
+			<select class="form-select" name="ocupacion" id="ocupacion">
+				<c:forEach items="${ocupaciones}" var="o">
+					<option value="${o.id}" ${o.id == persona.ocupacion.id ? 'selected' : '' }>${o.nombre}</option>
+				</c:forEach>
+			</select>
+		</div>
+	</div>
 
 	<div class="row mb-3">
 		<div class="offset-sm-2 col-sm-10">

@@ -18,6 +18,31 @@ USE `mf0226`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `ocupaciones`
+--
+
+DROP TABLE IF EXISTS `ocupaciones`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ocupaciones` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) NOT NULL,
+  `descripcion` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ocupaciones`
+--
+
+LOCK TABLES `ocupaciones` WRITE;
+/*!40000 ALTER TABLE `ocupaciones` DISABLE KEYS */;
+INSERT INTO `ocupaciones` VALUES (1,'Programador',NULL),(2,'Contable',NULL);
+/*!40000 ALTER TABLE `ocupaciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `personas`
 --
 
@@ -28,8 +53,11 @@ CREATE TABLE `personas` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
   `apellidos` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `ocupaciones_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_personas_ocupaciones_idx` (`ocupaciones_id`),
+  CONSTRAINT `fk_personas_ocupaciones` FOREIGN KEY (`ocupaciones_id`) REFERENCES `ocupaciones` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +66,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,'Javier','Lete'),(3,'MODIFICADO','MODIFICADEZ'),(4,'Insertadoasdfasd','Insertadezeteasdfasdfsdf'),(8,'asdfadsf','fgjhfghjfghjfgh');
+INSERT INTO `personas` VALUES (1,'Javier','Lete',1),(3,'MODIFICADO','MODIFICADEZ',2),(4,'Insertado','Insertadezeteasdfasdfsdf',1),(9,'afsd','dfgh',1),(12,'dsfhgsdfghdfgh','hjklhjkl',1),(13,'sdfgsdfg','sdfgsdfg',2),(14,'sdfgsdfg','dfghdhfg',1),(15,'sdfgsdfg','sdfgsdfg',1);
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,4 +114,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-06-30 16:01:28
+-- Dump completed on 2021-07-06 20:06:19

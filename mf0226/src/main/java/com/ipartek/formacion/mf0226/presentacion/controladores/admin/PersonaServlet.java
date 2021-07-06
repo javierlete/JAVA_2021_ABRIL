@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ipartek.formacion.mf0226.accesodatos.OcupacionDao;
 import com.ipartek.formacion.mf0226.accesodatos.PersonaDao;
+import com.ipartek.formacion.mf0226.entidades.Ocupacion;
 import com.ipartek.formacion.mf0226.entidades.Persona;
 
 @WebServlet("/admin/persona")
@@ -34,6 +36,7 @@ public class PersonaServlet extends HttpServlet {
 			}
 		}
 
+		request.setAttribute("ocupaciones", OcupacionDao.obtenerTodos());
 		request.getRequestDispatcher(PERSONA_JSP).forward(request, response);
 	}
 
@@ -44,8 +47,10 @@ public class PersonaServlet extends HttpServlet {
 		String id = request.getParameter("id");
 		String nombre = request.getParameter("nombre");
 		String apellidos = request.getParameter("apellidos");
+		String ocupacion = request.getParameter("ocupacion");
 
 		Persona persona = new Persona(id, nombre, apellidos);
+		persona.setOcupacion(new Ocupacion(Long.parseLong(ocupacion), null, null));
 
 		if(persona.getErrores().size() > 0) {
 			request.setAttribute("persona", persona);

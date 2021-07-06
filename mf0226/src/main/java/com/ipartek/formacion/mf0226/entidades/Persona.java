@@ -6,6 +6,7 @@ public class Persona {
 	private Long id;
 	private String nombre;
 	private String apellidos;
+	private Ocupacion ocupacion;
 
 	private TreeMap<String, String> errores = new TreeMap<>();
 	
@@ -52,6 +53,14 @@ public class Persona {
 			errores.put("apellidos", "Los apellidos son obligatorios");
 		}
 		this.apellidos = apellidos;
+	}
+
+	public Ocupacion getOcupacion() {
+		return ocupacion;
+	}
+
+	public void setOcupacion(Ocupacion ocupacion) {
+		this.ocupacion = ocupacion;
 	}
 
 	public TreeMap<String, String> getErrores() {
