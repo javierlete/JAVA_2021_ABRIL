@@ -32,12 +32,17 @@ public class PersonaDao {
 
 	public static Iterable<Persona> obtenerTodos() {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("SELECT * FROM personas");
+				PreparedStatement ps = con.prepareStatement(
+						"SELECT * FROM personas p JOIN ocupaciones o ON o.id = p.ocupaciones_id ORDER BY p.id;");
 				ResultSet rs = ps.executeQuery()) {
 			ArrayList<Persona> personas = new ArrayList<>();
 
+			Persona persona;
+			
 			while (rs.next()) {
-				personas.add(new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos")));
+				persona = new Persona(rs.getLong("p.id"), rs.getString("p.nombre"), rs.getString("p.apellidos"));
+				persona.setOcupacion(new Ocupacion(rs.getLong("o.id"), rs.getString("o.nombre"), rs.getString("o.descripcion")));
+				personas.add(persona);
 			}
 
 			return personas;

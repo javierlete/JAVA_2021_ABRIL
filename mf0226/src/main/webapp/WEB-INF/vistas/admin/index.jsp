@@ -9,6 +9,7 @@
 			<th>Id</th>
 			<th>Nombre</th>
 			<th>Apellidos</th>
+			<th>Ocupación</th>
 			<th>Opciones</th>
 		</tr>
 	</thead>
@@ -18,10 +19,11 @@
 				<th>${p.id}</th>
 				<td>${p.nombre}</td>
 				<td>${p.apellidos}</td>
-				<td>
-					<a class="btn btn-primary" href="admin/persona?id=${p.id}">Editar</a>
-					<a class="btn btn-danger" onclick="return confirm('¿Estás seguro?')" href="admin/borrar?id=${p.id}">Borrar</a>
-				</td>
+				<td>${p.ocupacion.nombre}</td>
+				<td><a class="btn btn-primary" href="admin/persona?id=${p.id}">Editar</a>
+					<a class="btn btn-danger"
+					onclick="return confirm('¿Estás seguro?')"
+					href="admin/borrar?id=${p.id}">Borrar</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>
@@ -30,9 +32,8 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td>
-				<a class="btn btn-primary" href="admin/persona">Añadir</a>
-			</td>
+			<td></td>
+			<td><a class="btn btn-primary" href="admin/persona">Añadir</a></td>
 		</tr>
 	</tfoot>
 </table>
