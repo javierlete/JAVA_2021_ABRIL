@@ -14,6 +14,7 @@
 				<div class="card-body">
 					<h5 class="card-title">${p.nombre}</h5>
 					<p class="card-text">${p.apellidos}</p>
+					<a class="btn btn-primary w-100" href="agregar?id=${p.id}">Agregar a la bolsa</a>
 				</div>
 			</div>
 		</div>
