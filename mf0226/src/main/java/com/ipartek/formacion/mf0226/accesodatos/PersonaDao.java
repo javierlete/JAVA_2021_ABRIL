@@ -54,7 +54,7 @@ public class PersonaDao {
 
 	public static Persona obtenerPorId(Long id) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("SELECT * FROM personas WHERE id = ?")) {
+				PreparedStatement ps = con.prepareStatement("SELECT * FROM personas p JOIN ocupaciones o ON o.id = p.ocupaciones_id WHERE p.id = ?")) {
 			ps.setLong(1, id);
 			ResultSet rs = ps.executeQuery();
 
@@ -62,7 +62,7 @@ public class PersonaDao {
 
 			if (rs.next()) {
 				persona = new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos"));
-				persona.setOcupacion(new Ocupacion(rs.getLong("ocupaciones_id"), null, null));
+				persona.setOcupacion(new Ocupacion(rs.getLong("o.id"), rs.getString("o.nombre"), rs.getString("o.descripcion")));
 			}
 
 			return persona;

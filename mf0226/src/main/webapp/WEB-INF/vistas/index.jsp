@@ -12,8 +12,9 @@
 			<div class="card">
 				<img src="fotos/${p.id}.jpg" class="card-img-top" alt="...">
 				<div class="card-body">
-					<h5 class="card-title">${p.nombre}</h5>
-					<p class="card-text">${p.apellidos}</p>
+					<h5 class="card-title">${p.nombre} ${p.apellidos}</h5>
+					<p class="card-text">${p.ocupacion.nombre}</p>
+					<p class="card-text">${p.ocupacion.descripcion}</p>
 					<a class="btn btn-primary w-100" href="agregar?id=${p.id}">Agregar a la bolsa</a>
 				</div>
 			</div>

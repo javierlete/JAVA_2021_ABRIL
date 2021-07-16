@@ -10,6 +10,8 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Apellidos</th>
+			<th>Ocupación</th>
+			<th>Descripción de la ocupación</th>
 			<th>Foto</th>
 			<th>Opciones</th>
 		</tr>
@@ -19,6 +21,8 @@
 			<tr>
 				<td class="align-middle">${p.nombre}</td>
 				<td class="align-middle">${p.apellidos}</td>
+				<td class="align-middle">${p.ocupacion.nombre}</td>
+				<td class="align-middle">${p.ocupacion.descripcion}</td>
 				<td class="align-middle">
 					<img style="height: 4rem" class="img-thumbnail" src="fotos/${p.id}.jpg" alt="Foto ${p.nombre} ${p.apellidos}" />
 				</td>
@@ -28,6 +32,18 @@
 			</tr>
 		</c:forEach>
 	</tbody>
+	<tfoot class="table-dark">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>
+				<a class="btn btn-primary" href="guardar">Guardar</a>
+			</td>
+		</tr>
+	</tfoot>
 
 </table>
 
