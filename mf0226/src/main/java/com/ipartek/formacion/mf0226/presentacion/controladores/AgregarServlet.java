@@ -27,6 +27,14 @@ public class AgregarServlet extends HttpServlet {
 		if(bolsa == null) {
 			Usuario usuario = (Usuario)session.getAttribute("usuario");
 			
+			if(usuario == null) {
+				request.setAttribute("textoMensaje", "Necesitas un usuario para poder rellenar la bolsa de trabajo");
+				request.setAttribute("tipoMensaje", "warning");
+				
+				request.getRequestDispatcher("/WEB-INF/vistas/login.jsp").forward(request, response);
+				return;
+			}
+			
 			bolsa = new BolsaTrabajo(usuario.getEmail());
 			
 			session.setAttribute("bolsa", bolsa);
