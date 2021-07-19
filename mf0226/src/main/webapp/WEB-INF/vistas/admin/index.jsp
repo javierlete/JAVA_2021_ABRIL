@@ -9,6 +9,7 @@
 			<th>Id</th>
 			<th>Nombre</th>
 			<th>Apellidos</th>
+			<th>Sueldo</th>
 			<th>Ocupación</th>
 			<th>Opciones</th>
 		</tr>
@@ -19,6 +20,9 @@
 				<th>${p.id}</th>
 				<td>${p.nombre}</td>
 				<td>${p.apellidos}</td>
+				<td>
+					<fmt:formatNumber type="currency" value="${p.sueldo}" />
+				</td>
 				<td>${p.ocupacion.nombre}</td>
 				<td><a class="btn btn-primary" href="admin/persona?id=${p.id}">Editar</a>
 					<a class="btn btn-danger"
@@ -29,6 +33,7 @@
 	</tbody>
 	<tfoot class="table-dark">
 		<tr>
+			<td></td>
 			<td></td>
 			<td></td>
 			<td></td>

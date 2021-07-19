@@ -42,7 +42,9 @@ public class AgregarServlet extends HttpServlet {
 		
 		bolsa.agregarPersona(PersonaDao.obtenerPorId(Long.parseLong(id)));
 		
-		request.getRequestDispatcher("/WEB-INF/vistas/bolsa.jsp").forward(request, response);
+		//request.getRequestDispatcher("/WEB-INF/vistas/bolsa.jsp").forward(request, response);
+		
+		response.sendRedirect(request.getContextPath() + "/bolsa");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

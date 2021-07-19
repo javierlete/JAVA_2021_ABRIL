@@ -48,8 +48,9 @@ public class PersonaServlet extends HttpServlet {
 		String nombre = request.getParameter("nombre");
 		String apellidos = request.getParameter("apellidos");
 		String ocupacion = request.getParameter("ocupacion");
+		String sueldo = request.getParameter("sueldo");
 
-		Persona persona = new Persona(id, nombre, apellidos);
+		Persona persona = new Persona(id, nombre, apellidos, sueldo);
 		persona.setOcupacion(new Ocupacion(Long.parseLong(ocupacion), null, null));
 
 		if(persona.getErrores().size() > 0) {

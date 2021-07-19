@@ -10,6 +10,7 @@
 		<tr>
 			<th>Nombre</th>
 			<th>Apellidos</th>
+			<th class="text-end">Sueldo</th>
 			<th>Ocupación</th>
 			<th>Descripción de la ocupación</th>
 			<th>Foto</th>
@@ -21,6 +22,9 @@
 			<tr>
 				<td class="align-middle">${p.nombre}</td>
 				<td class="align-middle">${p.apellidos}</td>
+				<td class="align-middle text-end">
+					<fmt:formatNumber type="currency" value="${p.sueldo}" />
+				</td>
 				<td class="align-middle">${p.ocupacion.nombre}</td>
 				<td class="align-middle">${p.ocupacion.descripcion}</td>
 				<td class="align-middle">
@@ -36,6 +40,9 @@
 		<tr>
 			<td></td>
 			<td></td>
+			<th class="text-end">
+				<fmt:formatNumber type="currency" value="${bolsa.totalSueldo}" />
+			</th>
 			<td></td>
 			<td></td>
 			<td></td>

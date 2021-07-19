@@ -1,26 +1,31 @@
 package com.ipartek.formacion.mf0226.entidades;
 
+import java.math.BigDecimal;
 import java.util.TreeMap;
 
 public class Persona {
 	private Long id;
 	private String nombre;
 	private String apellidos;
+	private BigDecimal sueldo;
+	
 	private Ocupacion ocupacion;
 
 	private TreeMap<String, String> errores = new TreeMap<>();
 	
-	public Persona(String id, String nombre, String apellidos) {
+	public Persona(String id, String nombre, String apellidos, String sueldo) {
 		setId(id);
 		setNombre(nombre);
 		setApellidos(apellidos);
+		setSueldo(sueldo);
 	}
-	
-	public Persona(Long id, String nombre, String apellidos) {
+
+	public Persona(Long id, String nombre, String apellidos, BigDecimal sueldo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
+		this.sueldo = sueldo;
 	}
 	
 	public Long getId() {
@@ -53,6 +58,25 @@ public class Persona {
 			errores.put("apellidos", "Los apellidos son obligatorios");
 		}
 		this.apellidos = apellidos;
+	}
+
+	public BigDecimal getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(String sueldo) {
+		try {
+			setSueldo(new BigDecimal(sueldo));
+		} catch (Exception e) {
+			errores.put("sueldo", "El sueldo debe ser un número que puede tener decimales");
+		}
+	}
+	
+	public void setSueldo(BigDecimal sueldo) {
+		if(sueldo != null && sueldo.compareTo(BigDecimal.ZERO) <= 0) {
+			errores.put("sueldo", "El sueldo debe ser un número positivo");
+		}
+		this.sueldo = sueldo;
 	}
 
 	public Ocupacion getOcupacion() {

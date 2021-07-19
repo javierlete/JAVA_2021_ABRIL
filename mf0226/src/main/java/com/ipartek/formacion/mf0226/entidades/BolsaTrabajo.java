@@ -1,5 +1,6 @@
 package com.ipartek.formacion.mf0226.entidades;
 
+import java.math.BigDecimal;
 import java.util.TreeMap;
 
 public class BolsaTrabajo {
@@ -18,6 +19,18 @@ public class BolsaTrabajo {
 		return personas.values();
 	}
 	
+	public BigDecimal getTotalSueldo() {
+		BigDecimal total = BigDecimal.ZERO;
+		
+		for(Persona persona: personas.values()) {
+			if(persona.getSueldo() != null) {
+				total = total.add(persona.getSueldo());
+			}
+		}
+		
+		return total;
+	}
+	
 	public void agregarPersona(Persona persona) {
 		personas.put(persona.getId(), persona);
 	}
@@ -25,4 +38,5 @@ public class BolsaTrabajo {
 	public void eliminarPersona(Long id) {
 		personas.remove(id);
 	}
+	
 }

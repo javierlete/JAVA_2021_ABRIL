@@ -40,7 +40,7 @@ public class PersonaDao {
 			Persona persona;
 			
 			while (rs.next()) {
-				persona = new Persona(rs.getLong("p.id"), rs.getString("p.nombre"), rs.getString("p.apellidos"));
+				persona = new Persona(rs.getLong("p.id"), rs.getString("p.nombre"), rs.getString("p.apellidos"), rs.getBigDecimal("p.sueldo"));
 				persona.setOcupacion(new Ocupacion(rs.getLong("o.id"), rs.getString("o.nombre"), rs.getString("o.descripcion")));
 				personas.add(persona);
 			}
@@ -61,7 +61,7 @@ public class PersonaDao {
 			Persona persona = null;
 
 			if (rs.next()) {
-				persona = new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos"));
+				persona = new Persona(rs.getLong("id"), rs.getString("nombre"), rs.getString("apellidos"), rs.getBigDecimal("sueldo"));
 				persona.setOcupacion(new Ocupacion(rs.getLong("o.id"), rs.getString("o.nombre"), rs.getString("o.descripcion")));
 			}
 
@@ -73,10 +73,11 @@ public class PersonaDao {
 
 	public static void insertar(Persona persona) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("INSERT INTO personas (nombre, apellidos, ocupaciones_id) VALUES (?,?,?)")) {
+				PreparedStatement ps = con.prepareStatement("INSERT INTO personas (nombre, apellidos, sueldo, ocupaciones_id) VALUES (?,?,?,?)")) {
 			ps.setString(1, persona.getNombre());
 			ps.setString(2, persona.getApellidos());
-			ps.setLong(3, persona.getOcupacion().getId());
+			ps.setBigDecimal(3, persona.getSueldo());
+			ps.setLong(4, persona.getOcupacion().getId());
 			
 			ps.executeUpdate();
 
@@ -87,11 +88,12 @@ public class PersonaDao {
 	
 	public static void modificar(Persona persona) {
 		try (Connection con = obtenerConexion();
-				PreparedStatement ps = con.prepareStatement("UPDATE personas SET nombre=?,apellidos=?,ocupaciones_id=? WHERE id=?")) {
+				PreparedStatement ps = con.prepareStatement("UPDATE personas SET nombre=?,apellidos=?,sueldo=?,ocupaciones_id=? WHERE id=?")) {
 			ps.setString(1, persona.getNombre());
 			ps.setString(2, persona.getApellidos());
-			ps.setLong(3, persona.getOcupacion().getId());
-			ps.setLong(4, persona.getId());
+			ps.setBigDecimal(3, persona.getSueldo());
+			ps.setLong(4, persona.getOcupacion().getId());
+			ps.setLong(5, persona.getId());
 			
 			ps.executeUpdate();
 
