@@ -1,5 +1,6 @@
 package com.ipartek.formacion.mf0226.accesodatos;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,10 +11,9 @@ import java.util.ArrayList;
 import com.ipartek.formacion.mf0226.entidades.Ocupacion;
 import com.ipartek.formacion.mf0226.entidades.Persona;
 
+import static com.ipartek.formacion.mf0226.accesodatos.Globales.*;
+
 public class PersonaDao {
-	private static final String URL_BD = "jdbc:mysql://localhost:3306/mf0226";
-	private static final String USUARIO_BD = "root";
-	private static final String PASSWORD_BD = "admin";
 
 	static {
 		try {
@@ -71,6 +71,31 @@ public class PersonaDao {
 		}
 	}
 
+	public static Iterable<Persona> buscar(String texto) {
+		try (Connection con = obtenerConexion();
+				CallableStatement ps = con.prepareCall("call mf0226.guguel(?)");) {
+			
+			ps.setString(1, texto);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			ArrayList<Persona> personas = new ArrayList<>();
+
+			Persona persona;
+			
+			while (rs.next()) {
+				persona = new Persona(rs.getLong("p.id"), rs.getString("p.nombre"), rs.getString("p.apellidos"), rs.getBigDecimal("p.sueldo"));
+				persona.setOcupacion(new Ocupacion(rs.getLong("o.id"), rs.getString("o.nombre"), rs.getString("o.descripcion")));
+				personas.add(persona);
+			}
+
+			return personas;
+		} catch (SQLException e) {
+			throw new AccesoDatosException("No se han podido obtener los registros", e);
+		}
+
+	}
+	
 	public static void insertar(Persona persona) {
 		try (Connection con = obtenerConexion();
 				PreparedStatement ps = con.prepareStatement("INSERT INTO personas (nombre, apellidos, sueldo, ocupaciones_id) VALUES (?,?,?,?)")) {

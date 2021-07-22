@@ -30,6 +30,11 @@
 						aria-current="page" href="#">Principal</a></li>
 					<li class="nav-item"><a class="nav-link" href="admin">Admin</a></li>
 				</ul>
+				<form action="buscar" class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Parte de nombre, apellidos u ocupación"
+						aria-label="Search" name="texto">
+					<button class="btn btn-outline-primary" type="submit">Buscar</button>
+				</form>
 				<span class="navbar-text">${sessionScope.usuario.email}</span>
 				<ul class="navbar-nav mb-2 mb-lg-0">
 					<c:choose>
@@ -52,8 +57,8 @@
 			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
 		</div>
-		
-		<% 
+
+		<%
 		session.removeAttribute("textoMensaje");
 		session.removeAttribute("tipoMensaje");
 		%>

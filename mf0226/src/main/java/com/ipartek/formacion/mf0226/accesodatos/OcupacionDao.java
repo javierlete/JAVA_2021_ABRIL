@@ -8,11 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ipartek.formacion.mf0226.entidades.Ocupacion;
+import static com.ipartek.formacion.mf0226.accesodatos.Globales.*;
 
 public class OcupacionDao {
-	private static final String URL_BD = "jdbc:mysql://localhost:3306/mf0226";
-	private static final String USUARIO_BD = "root";
-	private static final String PASSWORD_BD = "admin";
 
 	static {
 		try {

@@ -10,10 +10,9 @@ import java.sql.Statement;
 import com.ipartek.formacion.mf0226.entidades.BolsaTrabajo;
 import com.ipartek.formacion.mf0226.entidades.Persona;
 
+import static com.ipartek.formacion.mf0226.accesodatos.Globales.*;
+
 public class BolsaTrabajoDao {
-	private static final String URL_BD = "jdbc:mysql://localhost:3306/mf0226";
-	private static final String USUARIO_BD = "root";
-	private static final String PASSWORD_BD = "admin";
 
 	static {
 		try {
