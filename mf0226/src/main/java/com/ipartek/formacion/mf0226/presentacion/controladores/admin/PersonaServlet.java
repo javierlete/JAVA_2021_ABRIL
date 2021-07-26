@@ -52,8 +52,9 @@ public class PersonaServlet extends HttpServlet {
 
 		Persona persona = new Persona(id, nombre, apellidos, sueldo);
 		persona.setOcupacion(new Ocupacion(Long.parseLong(ocupacion), null, null));
-
+		
 		if(persona.getErrores().size() > 0) {
+			request.setAttribute("ocupaciones", OcupacionDao.obtenerTodos());
 			request.setAttribute("persona", persona);
 			request.getRequestDispatcher(PERSONA_JSP).forward(request, response);
 			return;
