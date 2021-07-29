@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.ipartek.formacion.uf2175spring.accesodatos.Dao;
-import com.ipartek.formacion.uf2175spring.accesodatos.PersonaDao;
 import com.ipartek.formacion.uf2175spring.entidades.Persona;
 
 @SpringBootApplication
