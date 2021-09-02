@@ -16,6 +16,7 @@ public class DaoMueble implements Dao<Mueble> {
 	private static final String PASSWORD = "admin";
 	private static final String SQL_OBTENER_TODOS = "SELECT * FROM muebles";
 	private static final String SQL_OBTENER_POR_ID = SQL_OBTENER_TODOS + " WHERE id = ?";
+	private static final String SQL_BORRAR = "DELETE FROM muebles WHERE id = ?";
 
 	@Override
 	public Iterable<Mueble> obtenerTodos() {
@@ -52,6 +53,20 @@ public class DaoMueble implements Dao<Mueble> {
 			}
 		} catch (Exception e) {
 			throw new AccesoDatosException("No se ha podido obtener el registro cuyo id es " + id, e);
+		}
+	}
+	
+	@Override
+	public void borrar(Long id) {
+		try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement ps = con.prepareStatement(SQL_BORRAR);) {
+			ps.setLong(1, id);
+
+			if(ps.executeUpdate() != 1) {
+				throw new AccesoDatosException("Se ha borrado un número de registros diferente de uno");
+			}
+		} catch (Exception e) {
+			throw new AccesoDatosException("No se ha podido borrar el registro cuyo id es " + id, e);
 		}
 	}
 
