@@ -128,13 +128,23 @@ public class Consola {
 	}
 
 	private static void modificar() {
-		// TODO Auto-generated method stub
 		System.out.println("Modificar");
+		
+		Long id = pedirId();
+		String nombre = sc.nextLine();
+		Double largo = pedirDouble("Largo");
+		Double ancho = pedirDouble("Ancho");
+		Double alto = pedirDouble("Alto");
+		
+		dao.modificar(new Mueble(id, nombre, largo, ancho, alto));
 	}
 
 	private static void borrar() {
-		// TODO Auto-generated method stub
 		System.out.println("Borrar");
+		
+		Long id = pedirId();
+		
+		dao.borrar(id);
 	}
 
 	private static void obtenerTodos() {
