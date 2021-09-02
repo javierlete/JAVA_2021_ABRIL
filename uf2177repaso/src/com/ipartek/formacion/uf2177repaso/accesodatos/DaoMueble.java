@@ -17,6 +17,7 @@ public class DaoMueble implements Dao<Mueble> {
 	private static final String SQL_OBTENER_TODOS = "SELECT * FROM muebles";
 	private static final String SQL_OBTENER_POR_ID = SQL_OBTENER_TODOS + " WHERE id = ?";
 	private static final String SQL_BORRAR = "DELETE FROM muebles WHERE id = ?";
+	private static final String SQL_MODIFICAR = "UPDATE muebles SET nombre=?,largo=?,ancho=?,alto=? WHERE id=?";
 
 	@Override
 	public Iterable<Mueble> obtenerTodos() {
@@ -53,6 +54,26 @@ public class DaoMueble implements Dao<Mueble> {
 			}
 		} catch (Exception e) {
 			throw new AccesoDatosException("No se ha podido obtener el registro cuyo id es " + id, e);
+		}
+	}
+	
+	@Override
+	public Mueble modificar(Mueble mueble) {
+		try (Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+				PreparedStatement ps = con.prepareStatement(SQL_MODIFICAR);) {
+			ps.setString(1, mueble.getNombre());
+			ps.setDouble(2, mueble.getLargo());
+			ps.setDouble(3, mueble.getAncho());
+			ps.setDouble(4, mueble.getAlto());
+			ps.setLong(5, mueble.getId());
+
+			if(ps.executeUpdate() != 1) {
+				throw new AccesoDatosException("Se ha modificar un número de registros diferente de uno");
+			} else {
+				return mueble;
+			}
+		} catch (Exception e) {
+			throw new AccesoDatosException("No se ha podido modificar el registro cuyo id es " + mueble.getId(), e);
 		}
 	}
 	

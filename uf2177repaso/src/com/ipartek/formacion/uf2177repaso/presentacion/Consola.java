@@ -8,14 +8,14 @@ public class Consola {
 	public static void main(String[] args) {
 		Dao<Mueble> dao = new DaoMueble();
 		
-		dao.borrar(1L);
+		// dao.borrar(1L);
 		
 		for(Mueble mueble: dao.obtenerTodos()) {
 			System.out.println(mueble);
 		}
 		
+		dao.modificar(new Mueble(2L, "Mueble modificado", 5.0, 6.0, 7.0));
+		
 		System.out.println(dao.obtenerPorId(2L));
-		
-		
 	}
 }
