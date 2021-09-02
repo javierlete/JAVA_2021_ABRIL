@@ -10,6 +10,8 @@ public class Consola {
 		
 		// dao.borrar(1L);
 		
+		System.out.println(dao.insertar(new Mueble("Prueba")));
+		
 		for(Mueble mueble: dao.obtenerTodos()) {
 			System.out.println(mueble);
 		}
