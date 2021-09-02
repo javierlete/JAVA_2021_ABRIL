@@ -20,6 +20,8 @@ public class Consola {
 	private static final int MODIFICAR = 4;
 
 	private static final int BORRAR = 5;
+	
+	private static final Dao<Mueble> dao = new DaoMueble();
 
 	public static void main(String[] args) {
 		int respuesta;
@@ -56,28 +58,73 @@ public class Consola {
 
 		return respuesta;
 	}
+	
+	private static long pedirId() {
+		System.out.print("Introduce el id deseado: ");
+		
+		long respuesta = sc.nextLong();
+
+		sc.nextLine();
+
+		return respuesta;
+	}
 
 	private static void ejecutarRespuesta(int respuesta) {
 		switch (respuesta) {
 		case OBTENER_TODOS:
-			System.out.println("Obtener Todos");
+			obtenerTodos();
 			break;
 		case OBTENER_POR_ID:
-			System.out.println("Obtener por ID");
+			obtenerPorId();
 			break;
 		case INSERTAR:
-			System.out.println("Insertar");
+			insertar();
 			break;
 		case MODIFICAR:
-			System.out.println("Modificar");
+			modificar();
 			break;
 		case BORRAR:
-			System.out.println("Borrar");
+			borrar();
 			break;
 		case SALIR:
 			System.out.println("Gracias por usar la aplicación");
 			break;
 		}
+	}
+
+	private static void obtenerPorId() {
+		System.out.println("Obtener por id");
+		
+		long id = pedirId();
+		
+		mostrarMueble(dao.obtenerPorId(id));
+	}
+
+	private static void insertar() {
+		// TODO Auto-generated method stub
+		System.out.println("Insertar");
+	}
+
+	private static void modificar() {
+		// TODO Auto-generated method stub
+		System.out.println("Modificar");
+	}
+
+	private static void borrar() {
+		// TODO Auto-generated method stub
+		System.out.println("Borrar");
+	}
+
+	private static void obtenerTodos() {
+		System.out.println("Obtener Todos");
+		
+		for (Mueble mueble : dao.obtenerTodos()) {
+			mostrarMueble(mueble);
+		}
+	}
+
+	private static void mostrarMueble(Mueble mueble) {
+		System.out.println(mueble);
 	}
 
 	public static void mainPruebas(String[] args) {
@@ -88,7 +135,7 @@ public class Consola {
 		System.out.println(dao.insertar(new Mueble("Prueba")));
 
 		for (Mueble mueble : dao.obtenerTodos()) {
-			System.out.println(mueble);
+			mostrarMueble(mueble);
 		}
 
 		dao.modificar(new Mueble(2L, "Mueble modificado", 5.0, 6.0, 7.0));
