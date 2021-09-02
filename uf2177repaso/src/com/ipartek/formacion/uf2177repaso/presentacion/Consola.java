@@ -68,6 +68,22 @@ public class Consola {
 
 		return respuesta;
 	}
+	
+	private static Double pedirDouble(String texto) {
+		Double dato;
+		
+		System.out.print(texto + ": ");
+		
+		String respuesta = sc.nextLine();
+
+		if(respuesta.trim().length() == 0) {
+			dato = null;
+		} else {
+			dato = Double.parseDouble(respuesta);
+		}
+
+		return dato;
+	}
 
 	private static void ejecutarRespuesta(int respuesta) {
 		switch (respuesta) {
@@ -101,8 +117,14 @@ public class Consola {
 	}
 
 	private static void insertar() {
-		// TODO Auto-generated method stub
 		System.out.println("Insertar");
+		
+		String nombre = sc.nextLine();
+		Double largo = pedirDouble("Largo");
+		Double ancho = pedirDouble("Ancho");
+		Double alto = pedirDouble("Alto");
+		
+		dao.insertar(new Mueble(nombre, largo, ancho, alto));
 	}
 
 	private static void modificar() {
