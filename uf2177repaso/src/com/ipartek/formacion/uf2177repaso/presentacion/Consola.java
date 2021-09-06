@@ -2,6 +2,7 @@ package com.ipartek.formacion.uf2177repaso.presentacion;
 
 import java.util.Scanner;
 
+import com.ipartek.formacion.uf2177repaso.accesodatos.AccesoDatosException;
 import com.ipartek.formacion.uf2177repaso.accesodatos.Dao;
 import com.ipartek.formacion.uf2177repaso.accesodatos.DaoMueble;
 import com.ipartek.formacion.uf2177repaso.entidades.Mueble;
@@ -20,7 +21,7 @@ public class Consola {
 	private static final int MODIFICAR = 4;
 
 	private static final int BORRAR = 5;
-	
+
 	private static final Dao<Mueble> dao = new DaoMueble();
 
 	public static void main(String[] args) {
@@ -43,45 +44,64 @@ public class Consola {
 		System.out.println("5. Borrar");
 
 		System.out.println();
-		
+
 		System.out.println("0. Salir");
-		
+
 		System.out.println();
 	}
 
 	private static int pedirRespuesta() {
-		System.out.print("Introduce la opción deseada: ");
-		
-		int respuesta = sc.nextInt();
+		int respuesta;
 
-		sc.nextLine();
+		do {
+			System.out.print("Introduce la opción deseada: ");
+			try {
+				respuesta = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				respuesta = -1;
+				System.out.println("La próxima vez un número");
+			}
+		} while (respuesta == -1);
 
 		return respuesta;
 	}
-	
+
 	private static long pedirId() {
-		System.out.print("Introduce el id deseado: ");
-		
-		long respuesta = sc.nextLong();
+		long respuesta;
 
-		sc.nextLine();
+		do {
+			System.out.print("Introduce el id deseado: ");
+			try {
+				respuesta = Long.parseLong(sc.nextLine());
+			} catch (NumberFormatException e) {
+				respuesta = -1;
+				System.out.println("La próxima vez un número");
+			}
+		} while (respuesta == -1);
 
 		return respuesta;
 	}
-	
+
 	private static Double pedirDouble(String texto) {
 		Double dato;
-		
-		System.out.print(texto + ": ");
-		
-		String respuesta = sc.nextLine();
 
-		if(respuesta.trim().length() == 0) {
-			dato = null;
-		} else {
-			dato = Double.parseDouble(respuesta);
-		}
+		do {
+			try {
+				System.out.print(texto + ": ");
 
+				String respuesta = sc.nextLine();
+
+				if (respuesta.trim().length() == 0) {
+					dato = null;
+				} else {
+					dato = Double.parseDouble(respuesta);
+				}
+			} catch (NumberFormatException e) {
+				dato = -1.0;
+				System.out.println("La próxima vez un número con decimales");
+			} 
+		} while (dato != null && dato < 0.0);
+		
 		return dato;
 	}
 
@@ -105,58 +125,71 @@ public class Consola {
 		case SALIR:
 			System.out.println("Gracias por usar la aplicación");
 			break;
+		default:
+			System.out.println("Opción no reconocida");
+			break;
 		}
 	}
 
 	private static void obtenerPorId() {
 		System.out.println("Obtener por id");
-		
+
 		long id = pedirId();
-		
+
 		mostrarMueble(dao.obtenerPorId(id));
 	}
 
 	private static void insertar() {
 		System.out.println("Insertar");
 		
+		System.out.print("Introduce el nombre: ");
 		String nombre = sc.nextLine();
 		Double largo = pedirDouble("Largo");
 		Double ancho = pedirDouble("Ancho");
 		Double alto = pedirDouble("Alto");
-		
+
 		dao.insertar(new Mueble(nombre, largo, ancho, alto));
 	}
 
 	private static void modificar() {
 		System.out.println("Modificar");
-		
+
 		Long id = pedirId();
+		System.out.print("Introduce el nombre: ");
 		String nombre = sc.nextLine();
 		Double largo = pedirDouble("Largo");
 		Double ancho = pedirDouble("Ancho");
 		Double alto = pedirDouble("Alto");
-		
+
 		dao.modificar(new Mueble(id, nombre, largo, ancho, alto));
 	}
 
 	private static void borrar() {
 		System.out.println("Borrar");
-		
+
 		Long id = pedirId();
-		
-		dao.borrar(id);
+
+		try {
+			dao.borrar(id);
+		} catch (AccesoDatosException e) {
+			System.out.println("No se ha encontrado el registro a borrar");
+		}
 	}
 
 	private static void obtenerTodos() {
 		System.out.println("Obtener Todos");
-		
+
 		for (Mueble mueble : dao.obtenerTodos()) {
 			mostrarMueble(mueble);
 		}
 	}
 
 	private static void mostrarMueble(Mueble mueble) {
-		System.out.println(mueble);
+		if (mueble != null) {
+			System.out.println(mueble);
+		} else {
+			System.out.println("No se ha encontrado ningún mueble con ese id");
+		}
 	}
 
 	public static void mainPruebas(String[] args) {
