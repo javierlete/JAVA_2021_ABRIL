@@ -12,6 +12,14 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.26</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.jgoodies/jgoodies-forms -->
+		<dependency>
+			<groupId>com.jgoodies</groupId>
+			<artifactId>jgoodies-forms</artifactId>
+			<version>1.8.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
