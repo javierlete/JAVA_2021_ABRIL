@@ -1,4 +1,4 @@
-package com.ipartek.formacion.accesodatos;
+package com.ipartek.formacion.controladores.rest;
 
 import java.io.IOException;
 
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.ipartek.formacion.accesodatos.Dao;
+import com.ipartek.formacion.accesodatos.DaoClienteMySql;
 import com.ipartek.formacion.modelos.Cliente;
 
 @WebServlet("/api/clientes/*")
@@ -44,7 +46,7 @@ public class ClienteRestServlet extends HttpServlet {
 			throws ServletException, IOException {
 		Cliente cliente = gson.fromJson(request.getReader(), Cliente.class);
 
-		cliente = dao.insertar(cliente);
+		dao.insertar(cliente);
 
 		response.getWriter().write(gson.toJson(cliente));
 
