@@ -8,8 +8,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.ipartek.formacion.uf2177spring.modelos.Cliente;
 
+@Repository
 public class DaoClienteMySql implements Dao<Cliente> {
 
 	private static final String URL = "jdbc:mysql://localhost:3306/uf2177_3";
@@ -20,16 +23,6 @@ public class DaoClienteMySql implements Dao<Cliente> {
 	private static final String SQL_DELETE = "DELETE FROM clientes WHERE id = ?";
 	private static final String SQL_UPDATE = "UPDATE clientes SET nombre=? WHERE id=?";
 	private static final String SQL_INSERT = "INSERT INTO clientes (nombre) VALUES (?)";
-	
-	// Singleton
-	private DaoClienteMySql() {}
-	
-	private static DaoClienteMySql dao = new DaoClienteMySql();
-	
-	public static DaoClienteMySql getDao() {
-		return dao;
-	}
-	// FIN singleton
 	
 	static {
 		try {
