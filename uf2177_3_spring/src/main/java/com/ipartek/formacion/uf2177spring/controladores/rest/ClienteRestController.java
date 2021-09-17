@@ -1,5 +1,7 @@
 package com.ipartek.formacion.uf2177spring.controladores.rest;
 
+import java.util.logging.Logger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +21,14 @@ import com.ipartek.formacion.uf2177spring.modelos.Cliente;
 @RestController
 @RequestMapping("/api/clientes")
 public class ClienteRestController {
+	private static final Logger LOGGER = Logger.getLogger(ClienteRestController.class.getName());
+	
 	@Autowired
 	private Dao<Cliente> dao;
 	
 	@GetMapping
 	public Iterable<Cliente> get() {
+		LOGGER.info("Se van a pedir todos los registros");
 		return dao.obtenerTodos();
 	}
 
@@ -32,8 +37,10 @@ public class ClienteRestController {
 		Cliente cliente = dao.obtenerPorId(id);
 		
 		if(cliente != null) {
+			LOGGER.info("Se devuelve el cliente " + cliente);
 			return new ResponseEntity<>(cliente, HttpStatus.OK);
 		} else {
+			LOGGER.warning("Se ha pedido el cliente " + id + " que no existe");
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
