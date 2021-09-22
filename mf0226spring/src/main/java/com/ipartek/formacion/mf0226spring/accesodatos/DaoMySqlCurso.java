@@ -34,8 +34,6 @@ public class DaoMySqlCurso implements Dao<Curso> {
 				cursos.add(new Curso((Integer)rs.getObject("c.codigo"), rs.getString("c.nombre"), rs.getString("c.identificador"), rs.getDate("c.fInicio").toLocalDate(), rs.getDate("c.fFin").toLocalDate(), rs.getInt("c.nHoras"), rs.getString("c.temario"), rs.getBoolean("c.activo"), rs.getBigDecimal("c.precio"), profesor));
 			}
 			
-			cursos.add(new Curso(1, "Prueab", "asdfasdf", LocalDate.now(), LocalDate.now(), 5, "", true, new BigDecimal("34"), new Profesor(1, "Javier", "lete")));
-			
 			return cursos;
 		} catch (Exception e) {
 			throw new AccesoDatosException("Error al obtener los cursos", e);
