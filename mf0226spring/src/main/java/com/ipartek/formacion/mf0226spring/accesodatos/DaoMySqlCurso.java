@@ -1,11 +1,9 @@
 package com.ipartek.formacion.mf0226spring.accesodatos;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Repository;
