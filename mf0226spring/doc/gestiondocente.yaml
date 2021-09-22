@@ -1,0 +1,159 @@
+openapi: 3.0.1
+info:
+  title: GestionDocenteREST
+  description: Acceso a datos de cursos y reseñas
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:8080/api/'
+    description: Tomcat
+    variables: {}
+paths:
+  /cursos:
+    get:
+      operationId: getAll
+      responses:
+        '200':
+          description: 'Correcto'
+          content:
+            application/json:
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/Curso'
+  '/cursos/{id}':
+    get:
+      summary: Obtener un curso por id
+      operationId: getById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Devuelve el cliente cuyo id es el que se ha pedido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curso'
+        '404':
+          description: No encontrado
+  /resenas:
+    post:
+      operationId: insert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resena'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  '/resenas/{id}':
+    put:
+      operationId: update
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resena'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resena'
+    delete:
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resena'
+      responses:
+        '204':
+          description: No encontrado
+
+components:
+  schemas:
+    Curso:
+      type: object
+      properties:
+        codigo:
+          type: number
+        nombre:
+          type: string
+        identificador:
+          type: string
+        fechaInicio:
+          type: string
+        fechaFin:
+          type: string
+        numeroHoras:
+          type: number
+        temario:
+          type: string
+        activo:
+          type: boolean
+        precio:
+          type: number
+        profesor:
+          type: object
+          properties:
+            codigo:
+              type: number
+            nombre:
+              type: string
+            apellidos:
+              type: string
+        resenas:
+          type: array
+          items:
+            $ref: '#/components/schemas/ResenaCompleta'
+  
+    ResenaCompleta:
+      type: object
+      properties:
+        texto:
+          type: string
+        alumno:
+          $ref: '#/components/schemas/Alumno'
+
+    Alumno:
+      type: object
+      properties:
+        codigo:
+          type: number
+        nombre:
+          type: string
+        apellidos:
+          type: string
+              
+    Resena:
+      type: object
+      properties:
+        alumnoCodigo:
+          type: number
+        cursoCodigo:
+          type: number
+        texto:
+          type: string
