@@ -17,6 +17,10 @@ public interface Dao<T> {
 		throw new AccesoDatosException("No implementado");
 	}
 
+	public default void borrar(T objeto) {
+		throw new AccesoDatosException("No implementado");
+	}
+	
 	public default void borrar(Integer id) {
 		throw new AccesoDatosException("No implementado");
 	}
