@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +20,6 @@ import lombok.NoArgsConstructor;
 public class Persona {
 	@Id
 	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 	private String nombre;
 	@Column(name = "fecha_nacimiento")

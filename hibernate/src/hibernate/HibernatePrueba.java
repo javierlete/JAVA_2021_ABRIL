@@ -3,33 +3,31 @@ package hibernate;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class HibernatePrueba {
 
 	public static void main(String[] args) {
-		SessionFactory factory = obtenerSessionFactory();
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory( "hibernate" );;
 		
-		Session session = factory.openSession();
-		session.beginTransaction();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
 		
 		// INSERTAR
-		session.save(new Persona(null, "Pepe", LocalDate.now()));
-		session.save(new Persona(null, "Juan", LocalDate.now()));
-		session.save(new Persona(null, "Pedro", LocalDate.now()));
+		entityManager.persist(new Persona(null, "Pepe", LocalDate.now()));
+		entityManager.persist(new Persona(null, "Juan", LocalDate.now()));
+		entityManager.persist(new Persona(null, "Pedro", LocalDate.now()));
 		
-		session.getTransaction().commit();
-		session.close();
+		entityManager.getTransaction().commit();
+		entityManager.close();
 		
-		session = factory.openSession();
-		session.beginTransaction();
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
 		
 		// OBTENER POR ID
-		Persona persona2 = session.find(Persona.class, 2L);
+		Persona persona2 = entityManager.find(Persona.class, 2L);
 		
 		System.out.println(persona2);
 		
@@ -39,46 +37,28 @@ public class HibernatePrueba {
 		// MODIFICAR DESDE OBJETO NUEVO
 		Persona persona3 = new Persona(3L, "Modificado3", null);
 		
-		session.merge(persona3);
+		entityManager.merge(persona3);
 		
 		// BORRAR
-		session.delete(new Persona(1L, null, null));
+		entityManager.remove(entityManager.find(Persona.class, 1L));
 		
-		// session.remove(session.find(Persona.class, 1L));
+		entityManager.getTransaction().commit();
+		entityManager.close();
 		
-		session.getTransaction().commit();
-		session.close();
-		
-		session = factory.openSession();
-		session.beginTransaction();
+		entityManager = entityManagerFactory.createEntityManager();
+		entityManager.getTransaction().begin();
 		
 		// OBTENER TODOS
 		@SuppressWarnings("unchecked")
-		List<Persona> personas = session.createQuery("from Persona").list();
+		List<Persona> personas = entityManager.createQuery("from Persona").getResultList();
 		
 		for(Persona persona: personas) {
 			System.out.println(persona);
 		}
 		
-		session.getTransaction().commit();
-		session.close();
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
+		entityManagerFactory.close();
 	}
-
-	private static SessionFactory obtenerSessionFactory() {
-		// A SessionFactory is set up once for an application!
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure() // configures settings
-																									// from
-																									// hibernate.cfg.xml
-				.build();
-		try {
-			return new MetadataSources(registry).buildMetadata().buildSessionFactory();
-		} catch (Exception e) {
-			// The registry would be destroyed by the SessionFactory, but we had trouble
-			// building the SessionFactory
-			// so destroy it manually.
-			StandardServiceRegistryBuilder.destroy(registry);
-			throw e;
-		}
-	}
-
 }
