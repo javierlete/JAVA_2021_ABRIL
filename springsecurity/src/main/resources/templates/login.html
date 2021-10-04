@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+	<h1>Login</h1>
+	<div th:if="${param.error}">Usuario o contraseña incorrecta</div>
+	<div th:if="${param.logout}">Acabas de cerrar la sesión</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> Usuario : <input type="text" name="username" />
+			</label>
+		</div>
+		<div>
+			<label> Contraseña: <input type="password" name="password" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Inicio de sesión" />
+		</div>
+	</form>
+</body>
+</html>

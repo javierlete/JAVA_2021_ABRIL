@@ -9,12 +9,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @Configuration
 @EnableWebSecurity
@@ -26,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/admin/**").hasRole("ADMIN") //.authenticated()
 				.anyRequest().permitAll()
 				.and()
-			.formLogin();
-//				.loginPage("/login")
+			.formLogin()
+				.loginPage("/login");
 //				.permitAll()
 //				.and()
 //			.logout()
@@ -55,15 +51,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	  throws Exception {
 	    auth.jdbcAuthentication()
 	      .dataSource(dataSource)
-	      //.withDefaultSchema()
-	      .withUser(User.withUsername("admin")
-	        .password(passwordEncoder().encode("contra"))
-	        .roles("ADMIN"));
+	      .usersByUsernameQuery("select email,password,1 "
+	    	        + "from usuarios "
+	    	        + "where email = ?")
+	      .authoritiesByUsernameQuery("SELECT u.email, CONCAT('ROLE_', r.nombre) "
+	      		+ "FROM usuarios u "
+	      		+ "JOIN roles r ON u.rol_id = r.id "
+	      		+ "WHERE email = ?");
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-	    return new BCryptPasswordEncoder();
+	    return NoOpPasswordEncoder.getInstance(); //BCryptPasswordEncoder();
 	}
 	
 //	CREATE TABLE users (
@@ -91,4 +90,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	INSERT INTO authorities (username, authority)
 //	  values ('user', 'ROLE_USER');
 
+//	https://www.baeldung.com/spring-security-jdbc-authentication
+	
 }

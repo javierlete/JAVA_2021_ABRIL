@@ -9,8 +9,14 @@ public class PrincipalController {
 	public String principal() {
 		return "index";
 	}
+
 	@GetMapping("/admin")
 	public String admin() {
 		return "admin/index";
+	}
+
+	@GetMapping("/login")
+	public String login() {
+		return "login";
 	}
 }
