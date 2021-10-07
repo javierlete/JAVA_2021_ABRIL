@@ -19,6 +19,21 @@ $(function() {
 
 function editar(href) {
 	alert('Editar ' + href);
+	
+	$.getJSON(href, function(persona) {
+		console.log(persona);
+	})
+	
+	// $.ajax({
+	// 	url: href,
+	// 	method: 'DELETE'
+	// }).done(function(datos, estado, peticion){
+	// 	
+	// }).fail(function(peticion, estado, error){
+	// 	console.log(peticion);
+	// 	console.log(estado);
+	// 	console.log(error);
+	// });
 }
 
 function borrar(href) {
