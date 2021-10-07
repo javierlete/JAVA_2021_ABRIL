@@ -12,7 +12,24 @@ $(function() {
 		});
 		
 		$(personas).each(function() {
-			$('table').append('<tr><td>' + this.nombre + '</td><td>' + this.fechaNacimiento + '</td></tr>');
+			$('table').append('<tr><td>' + this.nombre + '</td><td>' + this.fechaNacimiento + '</td><td><a href="javascript:editar(\'' + this._links.self.href + '\')">Editar</a> <a href="javascript:borrar(\'' + this._links.self.href + '\')">Borrar</a></td></tr>');
 		});
 	});
 });
+
+function editar(href) {
+	alert('Editar ' + href);
+}
+
+function borrar(href) {
+	alert('Borrar ' + href);
+	
+	$.ajax({
+		url: href,
+		method: 'DELETE'
+	}).fail(function(peticion, estado, error){
+		console.log(peticion);
+		console.log(estado);
+		console.log(error);
+	});
+}
