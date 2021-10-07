@@ -1,7 +1,34 @@
+var URL = 'http://localhost:8080/api/personas';
+
 $(function() {
+	$('body > button').click(function() {
+		$('form')[0].reset();
+		
+		$('form button').html('Insertar').click(function() {
+			$.ajax({
+				url: URL,
+				method: 'POST',
+				data: JSON.stringify({ nombre: $('#nombre').val(), fechaNacimiento: $('#fechaNacimiento').val() }),
+				dataType: 'json',
+				contentType: 'application/json',
+			}).done(function(datos, estado, peticion){
+				alert('Todo correcto');
+				$('form').hide();
+			}).fail(function(peticion, estado, error){
+				alert('Ha habido un error');
+				
+				console.log(peticion);
+				console.log(estado);
+				console.log(error);
+			});
+		});
+		
+		$('form').show();
+	});
+	
 	$('form').hide();
 
-	$.getJSON('http://localhost:8080/api/personas', function(datos) {
+	$.getJSON(URL, function(datos) {
 		var personas = datos._embedded.personas;
 
 		console.log(personas);
@@ -37,6 +64,7 @@ function editar(href) {
 				contentType: 'application/json',
 			}).done(function(datos, estado, peticion){
 				alert('Todo correcto');
+				$('form').hide();
 			}).fail(function(peticion, estado, error){
 				alert('Ha habido un error');
 				
