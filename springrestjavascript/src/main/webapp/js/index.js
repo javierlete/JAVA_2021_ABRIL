@@ -26,7 +26,10 @@ function insertarClick() {
 }
 
 // Para ejecutar cuando alguien pulse el botón del formulario para insertar
-function insertarFormClick() {
+function insertarFormClick(e) {
+	// Cancelamos el evento de botón para que no lo use el formulario e intente enviarlo
+	e.preventDefault();
+	
 	var persona = { 
 		nombre: $('#nombre').val(), 
 		fechaNacimiento: $('#fechaNacimiento').val() 
@@ -104,7 +107,10 @@ function editar(href) {
 }
 
 // Para ejecutar cuando se de al botón de editar dentro del formulario
-function editarForm() {
+function editarForm(e) {
+	// Cancelamos el evento de botón para que no lo use el formulario e intente enviarlo
+	e.preventDefault();
+	
 	// Recuperamos la información del botón
 	var href = $(this).data('href');
 	 
