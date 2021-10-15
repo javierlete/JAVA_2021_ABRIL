@@ -12,7 +12,7 @@ import com.ipartek.formacion.multieclipse.entidades.Rol;
 
 public class DaoMySqlRol implements Dao<Rol> {
 
-	static String URL = "jdbc:mysql://localhost:3306/hibernate";
+	static String URL = "jdbc:mysql://localhost:3306/hibernatetest?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8";
 	static final String USER = "root";
 	static final String PASS = "admin";
 	

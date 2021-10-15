@@ -26,7 +26,6 @@ class DaoMySqlRolTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		DaoMySqlRol.URL = DaoMySqlRol.URL + "test";
 	}
 
 	@AfterAll
