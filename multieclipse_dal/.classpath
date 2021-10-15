@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="/multieclipse_entidades/lib/lombok.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.26.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

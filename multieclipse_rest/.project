@@ -3,6 +3,8 @@
 	<name>multieclipse_rest</name>
 	<comment></comment>
 	<projects>
+		<project>multieclipse_entidades</project>
+		<project>multieclipse_dal</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
