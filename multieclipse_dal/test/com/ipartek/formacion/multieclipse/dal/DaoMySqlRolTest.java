@@ -84,7 +84,9 @@ class DaoMySqlRolTest {
 
 	@Test
 	void testInsertar() {
-		dao.insertar(new Rol(null, "YEPA"));
+		Rol insertado = dao.insertar(new Rol(null, "YEPA"));
+		
+		assertEquals(5L, insertado.getId());
 		
 		Rol rol = dao.obtenerPorId(5L);
 		
@@ -97,7 +99,11 @@ class DaoMySqlRolTest {
 		
 		assertEquals("USER", rol.getNombre());
 		
-		dao.modificar(new Rol(2L, "MODIFICADO"));
+		Rol modificar = new Rol(2L, "MODIFICADO");
+		
+		Rol modificado = dao.modificar(modificar);
+		
+		assertEquals(modificado, modificar);
 		
 		rol = dao.obtenerPorId(2L);
 		
