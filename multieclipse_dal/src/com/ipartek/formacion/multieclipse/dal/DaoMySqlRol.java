@@ -111,7 +111,12 @@ public class DaoMySqlRol implements Dao<Rol> {
 			PreparedStatement ps = con.prepareStatement(SQL_UPDATE);
 			ps.setString(1, rol.getNombre());
 			ps.setLong(2, rol.getId());
-			ps.executeUpdate();
+			
+			int num = ps.executeUpdate();
+			
+			if(num != 1) {
+				throw new DalException("No se ha encontrado el registro a modificar");
+			}
 			return rol;
 		} catch (Exception e) {
 			throw new DalException("Error al modificar el registro cuyo id es " + rol.getId(), e);
@@ -123,7 +128,12 @@ public class DaoMySqlRol implements Dao<Rol> {
 		try (Connection con = obtenerConexion()) {
 			PreparedStatement ps = con.prepareStatement(SQL_DELETE);
 			ps.setLong(1, id);
-			ps.executeUpdate();
+			
+			int num = ps.executeUpdate();
+			
+			if(num != 1) {
+				throw new DalException("No se ha encontrado el registro a borrar");
+			}
 			
 		} catch (Exception e) {
 			throw new DalException("Error al borrar el registro cuyo id es " + id, e);
