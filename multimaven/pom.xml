@@ -29,6 +29,7 @@
 	<modules>
 		<module>entidades</module>
 		<module>dal</module>
+		<module>rest</module>
 	</modules>
 
 	<properties>
