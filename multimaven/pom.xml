@@ -26,4 +26,7 @@
 
 
 	</dependencies>
+	<modules>
+		<module>entidades</module>
+	</modules>
 </project>
