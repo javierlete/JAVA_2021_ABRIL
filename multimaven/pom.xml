@@ -28,5 +28,6 @@
 	</dependencies>
 	<modules>
 		<module>entidades</module>
+		<module>dal</module>
 	</modules>
 </project>
