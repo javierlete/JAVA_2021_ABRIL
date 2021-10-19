@@ -31,4 +31,7 @@
 		</dependency>
 
 	</dependencies>
+	<modules>
+		<module>entidades-spring</module>
+	</modules>
 </project>
