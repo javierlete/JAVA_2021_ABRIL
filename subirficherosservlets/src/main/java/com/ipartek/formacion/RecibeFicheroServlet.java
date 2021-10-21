@@ -41,9 +41,6 @@ public class RecibeFicheroServlet extends HttpServlet {
 		String pathCompleto;
 		BufferedReader br;
 		
-		out.println("niño");
-		System.out.println("niño");
-		
 		for (Part part : request.getParts()) {
 		    fichero = part.getSubmittedFileName();
 
@@ -53,7 +50,7 @@ public class RecibeFicheroServlet extends HttpServlet {
 		    
 		    part.write(pathCompleto);
 		    
-		    br = new BufferedReader(new InputStreamReader(part.getInputStream())); //new FileReader(pathCompleto));
+		    br = new BufferedReader(new InputStreamReader(part.getInputStream(), "UTF-8")); //new FileReader(pathCompleto));
 		    
 		    String linea;
 		    while((linea = br.readLine()) != null) {
