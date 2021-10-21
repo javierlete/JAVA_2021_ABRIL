@@ -23,6 +23,7 @@ public class DaoMySqlPersona implements DaoPersona {
 	private String password;
 
 	private static final String SQL_SELECT = "SELECT * FROM personas";
+	private static final String SQL_SELECT_ID = SQL_SELECT + " WHERE id=?";
 
 	static {
 		try {
@@ -56,6 +57,27 @@ public class DaoMySqlPersona implements DaoPersona {
 			return personas;
 		} catch (SQLException e) {
 			throw new DaoException("No se han podido obtener todos los registros", e);
+		}
+	}
+
+	@Override
+	public Persona obtenerPorId(long id) {
+		try (Connection con = obtenerConexion(); PreparedStatement ps = con.prepareStatement(SQL_SELECT_ID);) {
+			ps.setLong(1, id);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			Persona persona = null;
+			
+			if(rs.next()) {
+				Date fechaNacimientoDate = rs.getDate("fecha_nacimiento");
+				LocalDate fechaNacimiento = fechaNacimientoDate != null ? fechaNacimientoDate.toLocalDate() : null;
+				persona = new Persona(rs.getLong("id"), rs.getString("nombre"), fechaNacimiento);
+			}
+			
+			return persona;
+		} catch (SQLException e) {
+			throw new DaoException("No se ha podido obtener la persona " + id, e);
 		}
 	}
 

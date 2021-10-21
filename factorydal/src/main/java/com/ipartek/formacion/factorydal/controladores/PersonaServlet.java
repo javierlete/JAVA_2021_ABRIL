@@ -7,14 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/personas")
-public class PersonasServlet extends HttpServlet {
+@WebServlet("/persona")
+public class PersonaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("personas", Globales.daoPersonas.obtenerTodos());
-		request.getRequestDispatcher("/WEB-INF/vistas/personas.jsp").forward(request, response);
+		String id = request.getParameter("id");
+		
+		request.setAttribute("persona", Globales.daoPersonas.obtenerPorId(Long.parseLong(id)));
+		request.getRequestDispatcher("/WEB-INF/vistas/persona.jsp").forward(request, response);
 	}
 
 	@Override

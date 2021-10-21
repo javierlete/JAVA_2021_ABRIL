@@ -16,6 +16,7 @@
 				<th scope="col">Id</th>
 				<th scope="col">Nombre</th>
 				<th scope="col">Fecha de nacimiento</th>
+				<th scope="col">Opciones</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -24,6 +25,10 @@
 					<th scope="row">${persona.id}</th>
 					<td>${persona.nombre}</td>
 					<td>${persona.fechaNacimiento}</td>
+					
+					<td>
+						<a href="persona?id=${persona.id}">Mostrar</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
