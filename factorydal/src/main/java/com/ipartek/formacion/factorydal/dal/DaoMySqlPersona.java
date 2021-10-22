@@ -17,7 +17,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
-public class DaoMySqlPersona implements DaoPersona {
+class DaoMySqlPersona implements DaoPersona {
 	private String url;
 	private String usuario;
 	private String password;
