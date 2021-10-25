@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<table>
+		<caption>Personas</caption>
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Fecha de nacimiento</th>
+				<th scope="col">Opciones</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="persona: ${personas}">
+				<th scope="row" th:text="${persona.id}"></th>
+				<td th:text="${persona.nombre}"></td>
+				<td th:text="${persona.fechaNacimiento}"></td>
+
+				<td><a th:href="'persona?id=' + ${persona.id}">Mostrar</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
