@@ -2,6 +2,7 @@ package com.ipartek.formacion.factorydalspring.entidades;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,5 +23,6 @@ public class Persona {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
+	@Column(name="fecha_nacimiento")
 	private LocalDate fechaNacimiento;
 }
